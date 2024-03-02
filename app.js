@@ -224,6 +224,7 @@ function fillFields() {
 }
 
 function openDashboard() {
+    quizQuestion.style.display = "none";
   if (loginName.value === "Abdul Haseeb" && loginPass.value === "23354") {
     mainPage.style.display = "none";
     loginPage.style.display = "none";
