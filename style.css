@@ -33,12 +33,31 @@ h3 {
     "Lucida Sans", Arial, sans-serif;
 }
 
-label {
+/* label {
   margin-right: 10px;
+} */
+
+.form-floating > label {
+    top: -8px;
 }
 
-.name {
-  margin-left: 25px;
+input {
+    border: 2px solid grey;
+}
+
+.available-course {
+    box-shadow: rgba(38, 255, 0, 0.505) 0px 1px 30px;
+}
+
+hr {
+    font-weight: normal !important;
+    height: 0.5px !important;
+}
+
+.radio-btn {
+    width: 16px !important;
+    height: 16px !important;
+    margin-right: 6px !important;
 }
 
 .back-btn {
@@ -48,3 +67,16 @@ label {
 .join-btn:active {
     opacity: 0.8;
 }
+
+@media (min-width: 764px) {
+    input {
+        width: 380px !important;
+    }
+}
+
+@media (max-width: 764px) {
+    input {
+        width: 320px !important;
+    }
+}
+
