@@ -28,14 +28,18 @@ h3 {
   cursor: pointer;
 }
 
+#login-page {
+  height: 78vh;
+}
+
 .Login-head {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
 
-/* label {
-  margin-right: 10px;
-} */
+#courseSection {
+  padding: 30px !important;
+}
 
 .form-floating > label {
     top: -8px;
@@ -46,7 +50,7 @@ input {
 }
 
 .available-course {
-    box-shadow: rgba(38, 255, 0, 0.505) 0px 1px 30px;
+    box-shadow: rgba(38, 255, 0, 0.505) 0px 1px 8px 0px;
 }
 
 hr {
