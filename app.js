@@ -1,14 +1,14 @@
-var questions = {
-  one: {
-    question: "Inside which HTML element do we put the JavaScript?",
-    optionA: "&lt;scripting&gt;",
-    optionB: "&lt;js&gt;",
-    optionC: "&lt;script&gt;",
-    optionD: "&lt;javascript&gt;",
-    correctAnswer: "&lt;script&gt;",
+var htmlQuiz = [
+  {
+    question: "Who is making the Web standards?    ",
+    optionA: "GOOGLE",
+    optionB: "MICROSOFT",
+    optionC: "MOZILLA",
+    optionD: "WORLD WIDE WEB",
+    correctAnswer: "WORLD WIDE WEB",
   },
 
-  two: {
+  {
     question: "Where is the correct place to insert a JavaScript?",
     optionA: "The &lt;head&gt; section",
     optionB: "The &lt;body&gt; section",
@@ -17,7 +17,7 @@ var questions = {
     correctAnswer: "Both head and body",
   },
 
-  three: {
+  {
     question:
       'What is the correct syntax for referring to an external script called "app.js?"',
     optionA: '&lt;script name="app.js&gt;',
@@ -27,7 +27,7 @@ var questions = {
     correctAnswer: '&lt;script src="app.js"&gt;',
   },
 
-  four: {
+  {
     question: 'How do you write "Hello World" in an alert box?',
     optionA: 'msg("Hello World")',
     optionB: 'alertBox("Hello World")',
@@ -36,7 +36,7 @@ var questions = {
     correctAnswer: 'alert("Hello World")',
   },
 
-  five: {
+  {
     question: "How do you create a function in JavaScript?",
     optionA: "function:myFuction()",
     optionB: "function myFunction()",
@@ -45,7 +45,7 @@ var questions = {
     correctAnswer: "function myFunction()",
   },
 
-  six: {
+  {
     question: 'How do you call a function named "myFunction"?',
     optionA: "call function myFunction()",
     optionB: "call myFunction()",
@@ -54,7 +54,7 @@ var questions = {
     correctAnswer: "myFunction()",
   },
 
-  seven: {
+  {
     question: "How to write an IF statement in JavaScript?",
     optionA: "if i == 5 then",
     optionB: "if i = 5 then",
@@ -62,223 +62,107 @@ var questions = {
     optionD: "if i = 5",
     correctAnswer: "if (i == 5)",
   },
+];
+
+// * Variables -------
+
+var questionCount = 0;
+var score = 0;
+
+// ! Elements --------
+
+var quizWindow = document.getElementById("quizWindow");
+var quizMainWindow = document.getElementById("quizQuestion");
+
+var question = document.getElementById("question");
+
+var option1 = document.getElementById("option1");
+var option2 = document.getElementById("option2");
+var option3 = document.getElementById("option3");
+var option4 = document.getElementById("option4");
+
+var label1 = document.getElementById("val1");
+var label2 = document.getElementById("val2");
+var label3 = document.getElementById("val3");
+var label4 = document.getElementById("val4");
+
+var allOptions = document.getElementsByClassName("allOptions");
+
+var resultSection = document.getElementById("resultSection");
+
+// ^ Functions -------
+
+const renderQuestion = () => {
+  question.innerHTML = htmlQuiz[questionCount].question;
+
+  option1.value = htmlQuiz[questionCount].optionA;
+  option2.value = htmlQuiz[questionCount].optionB;
+  option3.value = htmlQuiz[questionCount].optionC;
+  option4.value = htmlQuiz[questionCount].optionD;
+
+  label1.innerHTML = htmlQuiz[questionCount].optionA;
+  label2.innerHTML = htmlQuiz[questionCount].optionB;
+  label3.innerHTML = htmlQuiz[questionCount].optionC;
+  label4.innerHTML = htmlQuiz[questionCount].optionD;
 };
 
-var mcqContainer = document.getElementById("mcqContainer");
+renderQuestion();
 
-// for (var key in questions) {
-//   var obj = questions[key];
-//   mcqContainer.innerHTML += `<div>
-//     <h4 class="fw-bold">
-//      ${obj.question}
-//     </h4>
+const deSelect = () => {
+  for (let i = 0; i < allOptions.length; i++) {
+    allOptions[i].checked = false;
+  }
+};
 
-//     <div
-//       class="d-flex align-items-center justify-content-start mt-3 mx-4"
-//     >
-//       <h5 class="fw-bold">
-//         <input
-//           class="radio-btn"
-//           type="radio"
-//         />${obj.optionA}
-//       </h5>
-//     </div>
+function next() {
+  var checkedAns = false;
+  for (var i = 0; i < allOptions.length; i++) {
+    // console.log("Length of allOptions: ", allOptions.length);
+    if (allOptions[i].checked) {
+      checkedAns = true;
+      console.log("The 1st if");
 
-//     <div
-//       class="d-flex align-items-center justify-content-start mt-3 mx-4"
-//     >
-//       <h5 class="fw-bold">
-//         <input
-//           class="radio-btn"
-//           type="radio"
-//         />${obj.optionB}
-//       </h5>
-//     </div>
+      console.log("Selected Option: ", allOptions[i].value);
 
-//     <div
-//       class="d-flex align-items-center justify-content-start mt-3 mx-4"
-//     >
-//       <h5 class="fw-bold">
-//         <input
-//           class="radio-btn"
-//           type="radio"
-//         />${obj.optionC}
-//       </h5>
-//     </div>
-
-//     <div
-//       class="d-flex align-items-center justify-content-start mt-3 mx-4"
-//     >
-//       <h5 class="fw-bold">
-//         <input
-//           class="radio-btn"
-//           type="radio"
-//         />${obj.optionD}
-//       </h5>
-//     </div>
-
-// </div>
-// `;
-// }
-
-const mcq = document.getElementById("quiz");
-const result = document.getElementById("results");
-const submitBtn = document.getElementById("submit");
-
-// let currentIndex = Math.floor(Math.random() * Object.keys(questions).length);
-let counter = 1;
-let score = 0;
-var mcqAnswer;
-let displayedQuestions = [];
-
-function displayQuestions() {
-  // if (displayQuestions.length === Object.keys(questions).length) {
-  //   // console.log(score);
-  //   return;
-  // }
-
-  let remainingQuestions = Object.keys(questions).filter(
-    (key) => !displayedQuestions.includes(key)
-  );
-
-  if (remainingQuestions.length === 0) {
-    return;
+      if (allOptions[i].value === htmlQuiz[questionCount].correctAnswer) {
+        score++;
+      }
+    }
   }
 
-  let randomIndex = Math.floor(Math.random() * remainingQuestions.length);
-  let currentQuestionKey = remainingQuestions[randomIndex];
-  let currentQuestion = questions[currentQuestionKey];
-
-  // console.log("Length of Object", Object.keys(questions).length);
-  // var obj = questions[Object.keys(questions)[currentIndex]];
-  mcq.innerHTML = `<div>
-                       <h4 class="fw-bold">
-                         ${counter++ + ")"} ${currentQuestion.question}
-                       </h4>
-
-                       <div
-                         class="d-flex align-items-center justify-content-start mt-3 mx-4"
-                       >
-                         <h5 class="fw-bold">
-                           <input
-                           id="radioBtn"
-                             class="radio-btn"
-                             type="radio"
-                             name="options"
-                             value="${currentQuestion.optionA}"
-                           />${currentQuestion.optionA}
-                         </h5>
-                       </div>
-
-                       <div
-                         class="d-flex align-items-center justify-content-start mt-3 mx-4"
-                       >
-                         <h5 class="fw-bold">
-                           <input
-                           id="radioBtn"
-                             class="radio-btn"
-                             type="radio"
-                             name="options"
-                             value="${currentQuestion.optionB}"
-                           />${currentQuestion.optionB}
-                         </h5>
-                       </div>
-
-                       <div
-                         class="d-flex align-items-center justify-content-start mt-3 mx-4"
-                       >
-                         <h5 class="fw-bold">
-                           <input
-                           id="radioBtn"
-                             class="radio-btn"
-                             type="radio"
-                             name="options"
-                             value="${currentQuestion.optionC}"
-                           />${currentQuestion.optionC}
-                         </h5>
-                       </div>
-
-                       <div
-                         class="d-flex align-items-center justify-content-start mt-3 mx-4"
-                       >
-                         <h5 class="fw-bold">
-                           <input
-                           id="radioBtn"
-                             class="radio-btn"
-                             type="radio"
-                             name="options"
-                             value="${currentQuestion.optionD}"
-                           />${currentQuestion.optionD} 
-                         </h5>
-                       </div>
-                     </div>`;
-  displayedQuestions.push(currentQuestionKey);
-  // delete questions[Object.keys(questions)[currentIndex]];
-}
-
-// var radios = mcq.querySelectorAll("input[type='radio']");
-
-function nextMCQ() {
-  let selectedRadio = mcq.querySelector("input[type='radio']:checked");
-
-  // console.log("MCQ ANSWER",obj.correctAnswer);
-  // console.log("Selected Radio", selectedRadio);
-  // var answer = null;
-  if (!selectedRadio) {
-    alert("Please make a selection.");
-    return;
-  }
-
-  let answer = selectedRadio.value;
-  let currentQuestionKey = displayedQuestions[displayedQuestions.length - 1];
-  let currentQuestion = questions[currentQuestionKey];
-
-  if (answer === currentQuestion.correctAnswer) {
-    score++;
-  }
-
-  console.log("Score", score);
-
-  // console.log("Answer", answer);
-  // if (typeof answer === null) {
-  //   alert("Please make a selection.");
-  //   return;
-  // }
-
-  // const obj = questions[Object.keys(questions)[currentIndex]];
-  // const message = `You answered "${answer}". Correct answer: "${
-  //   obj[Object.values(obj)[answer]]
-  // }".`;
-  // result.innerHTML += `<p>${message}</p>`;
-
-  // currentIndex = Math.floor(Math.random() * 2);
-  // var obj = questions[Object.keys(questions)[currentIndex]];
-  // if (currentIndex > Object.keys(questions).length) {
-  //   submitBtn.disabled = true;
-  //   result.innerHTML += "<p>Quiz complete!</p>";
-  //   result.style.fontSize = "30px";
-  //   result.style.fontWeight = "bold";
-  //   result.style.color = "green";
-  //   // console.log(score);
-  //   return;
-  // }
-
-  if (displayedQuestions.length === Object.keys(questions).length) {
-    submitBtn.disabled = true;
-    result.innerHTML += "<p>Quiz complete!</p>";
-    result.style.fontSize = "30px";
-    result.style.fontWeight = "bold";
-    result.style.color = "green";
-    result.innerHTML += `<p>Your final score is: ${score} out of ${
-      Object.keys(questions).length
-    }</p>`;
-    submitBtn.disabled = true;
+  if (!checkedAns) {
+    alert("Please Make a selection!");
   } else {
-    displayQuestions();
+    if (questionCount < htmlQuiz.length - 1) {
+      questionCount++;
+      deSelect();
+      renderQuestion();
+      console.log("Score", score);
+    } else {
+      resultSection.style.display = "flex";
+      resultSection.style.alignItems = "center";
+      resultSection.style.justifyContent = "center";
+      quizMainWindow.style.display = "none";
+      showResult();
+    }
   }
 }
 
-displayQuestions();
+var noOfQuestions = document.getElementById("numberOfQuestion");
+var correctQuestion = document.getElementById("correctQuest");
+var message = document.getElementById("message");
+
+function showResult() {
+  noOfQuestions.innerText = htmlQuiz.length;
+  correctQuestion.innerHTML = score;
+  if (score < 5) {
+    message.innerHTML = "Sorry, You have failed!";
+    message.style.color = "red";
+  } else {
+    message.innerHTML = "Congratulations! You have passed!";
+    message.style.color = "green";
+  }
+}
 
 var loginPage = document.getElementById("login-page");
 var mainPage = document.getElementById("main-page");

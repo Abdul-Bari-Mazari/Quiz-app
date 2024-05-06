@@ -7,6 +7,26 @@
   font-family: JosefSans;
 }
 
+section {
+  background-color: rgb(236, 239, 241);
+}
+
+h3 {
+  font-size: 50px;
+}
+
+input {
+  border: 2px solid grey;
+}
+hr {
+  font-weight: normal !important;
+  height: 0.5px !important;
+}
+
+li {
+  list-style: none;
+}
+
 .navbar {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px 0px,
     rgb(218, 220, 224) 0px -1px 0px 0px inset;
@@ -14,14 +34,6 @@
 
 .navbar-brand img {
   width: 100px;
-}
-
-section {
-  background-color: rgb(236, 239, 241);
-}
-
-h3 {
-  font-size: 50px;
 }
 
 .cursor-pointer {
@@ -42,26 +54,17 @@ h3 {
 }
 
 .form-floating > label {
-    top: -8px;
-}
-
-input {
-    border: 2px solid grey;
+  top: -8px;
 }
 
 .available-course {
-    box-shadow: rgba(38, 255, 0, 0.505) 0px 1px 8px 0px;
-}
-
-hr {
-    font-weight: normal !important;
-    height: 0.5px !important;
+  box-shadow: rgba(38, 255, 0, 0.505) 0px 1px 8px 0px;
 }
 
 .radio-btn {
-    width: 16px !important;
-    height: 16px !important;
-    margin-right: 6px !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 6px !important;
 }
 
 .back-btn {
@@ -69,10 +72,15 @@ hr {
 }
 
 .join-btn:active {
-    opacity: 0.8;
+  opacity: 0.8;
+}
+.allOptions {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
 }
 
-@media (min-width: 764px) {
+/* @media (min-width: 764px) {
     input {
         width: 380px !important;
     }
@@ -82,5 +90,4 @@ hr {
     input {
         width: 320px !important;
     }
-}
-
+} */

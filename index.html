@@ -32,7 +32,7 @@
   </head>
 
   <body>
-    <!-- Navbar -->
+    <!-- ************* Navbar ***************** -->
 
     <nav
       class="navbar navbar-expand-lg bg-body-tertiary fs-5"
@@ -65,6 +65,8 @@
       </div>
     </nav>
 
+    <!-- ************* Main Page ***************** -->
+
     <section
       id="main-page"
       class="p-1 py-5 p-md-5 text-center"
@@ -94,10 +96,11 @@
       </div>
     </section>
 
+    <!-- **************** Login **************** -->
     <div
-    class="flex-column align-items-center justify-content-center"
-      id="login-page"
+      class="flex-column align-items-center justify-content-center"
       style="display: none"
+      id="login-page"
     >
       <div
         class="container shadow-sm p-5 rounded d-flex flex-column align-items-center justify-content-center"
@@ -161,7 +164,7 @@
       </div>
     </div>
 
-    <!-- Field / Course Section -->
+    <!-- *********** Course Section ************* -->
     <section
       class="p-1 p-sm-4 bg-white"
       id="courseSection"
@@ -253,7 +256,9 @@
             </div>
           </div>
 
-          <div class="card available-course border border-black p-3 col-12 col-md-5 col-lg-3">
+          <div
+            class="card available-course border border-black p-3 col-12 col-md-5 col-lg-3"
+          >
             <div class="card-body">
               <h5 class="card-title fw-bold fs-4">
                 Web and Mobile Hybrid App Development
@@ -276,9 +281,7 @@
 
           <div class="card border border-black p-3 col-12 col-md-5 col-lg-3">
             <div class="card-body">
-              <h5 class="card-title fw-bold fs-4">
-                Web and App Rangers
-              </h5>
+              <h5 class="card-title fw-bold fs-4">Web and App Rangers</h5>
               <p
                 class="fw-bold"
                 style="color: rgb(85, 82, 82)"
@@ -297,7 +300,7 @@
       </div>
     </section>
 
-    <!-- Quiz Questions (Quiz Start) -->
+    <!-- ********* Quiz Questions (Quiz Start) ********** -->
     <section>
       <div
         class="container pb-5"
@@ -319,15 +322,68 @@
 
         <hr />
 
-        <div
-          class="question mb-5"
-          id="quiz"
-        ></div>
+        <div id="quizWindow">
+          <ul class="fs-4">
+            <li><b id="question">Question will be here</b></li>
+
+            <li>
+              <input
+                id="option1"
+                class="allOptions"
+                name="quizOption"
+                type="radio"
+              /><label
+                for="option1"
+                id="val1"
+                >Option 1</label
+              >
+            </li>
+
+            <li>
+              <input
+                id="option2"
+                class="allOptions"
+                name="quizOption"
+                type="radio"
+              /><label
+                for="option2"
+                id="val2"
+                >Option 2</label
+              >
+            </li>
+
+            <li>
+              <input
+                id="option3"
+                class="allOptions"
+                name="quizOption"
+                type="radio"
+              /><label
+                for="option3"
+                id="val3"
+                >Option 3</label
+              >
+            </li>
+
+            <li>
+              <input
+                id="option4"
+                class="allOptions"
+                name="quizOption"
+                type="radio"
+              /><label
+                for="option4"
+                id="val4"
+                >Option 4</label
+              >
+            </li>
+          </ul>
+        </div>
 
         <div class="text-center text-sm-start mb-5">
           <!-- <button onclick="openDashboard()" class="btn btn-secondary mx-4 fw-bold px-3">Back</button> -->
           <button
-            onclick="nextMCQ()"
+            onclick="next()"
             class="btn btn-primary fw-bold px-3 text-start"
             id="submit"
           >
@@ -338,12 +394,37 @@
       </div>
     </section>
 
+    <!--Result Section >-->
+    <section
+      id="resultSection"
+      style="display: none; height: 75vh"
+    >
+      <div class="showResult">
+        <h1
+          class="display-4 text-center mt-4 pt-3"
+          style="text-decoration: underline"
+        >
+          Result
+        </h1>
 
-    <!--  Result Section  -->
-    <!-- <section id="resultSection">
-      <p class="display-4 text-center mt-4">Result</p>
+        <div class="totalQuestion d-flex justify-content-between px-5">
+          <h2>Total Question</h2>
+          <h3 id="numberOfQuestion"></h3>
+        </div>
 
-    </section> -->
+        <div class="correctQuestions d-flex justify-content-between px-5">
+          <h2>Correct Questions</h2>
+          <h3 id="correctQuest"></h3>
+        </div>
+
+        <div>
+          <h3
+            class="text-center"
+            id="message"
+          ></h3>
+        </div>
+      </div>
+    </section>
 
     <footer class="bg-white text-center p-5 text-dark position-relative">
       <div class="container">
