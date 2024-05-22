@@ -1,4 +1,4 @@
-var htmlQuiz = [
+const htmlQuiz = [
   {
     question: "Who is making the Web standards?    ",
     optionA: "GOOGLE",
@@ -66,29 +66,29 @@ var htmlQuiz = [
 
 // * Variables -------
 
-var questionCount = 0;
-var score = 0;
+const questionCount = 0;
+const score = 0;
 
 // ! Elements --------
 
-var quizWindow = document.getElementById("quizWindow");
-var quizMainWindow = document.getElementById("quizQuestion");
+const quizWindow = document.getElementById("quizWindow");
+const quizMainWindow = document.getElementById("quizQuestion");
 
-var question = document.getElementById("question");
+const question = document.getElementById("question");
 
-var option1 = document.getElementById("option1");
-var option2 = document.getElementById("option2");
-var option3 = document.getElementById("option3");
-var option4 = document.getElementById("option4");
+const option1 = document.getElementById("option1");
+const option2 = document.getElementById("option2");
+const option3 = document.getElementById("option3");
+const option4 = document.getElementById("option4");
 
-var label1 = document.getElementById("val1");
-var label2 = document.getElementById("val2");
-var label3 = document.getElementById("val3");
-var label4 = document.getElementById("val4");
+const label1 = document.getElementById("val1");
+const label2 = document.getElementById("val2");
+const label3 = document.getElementById("val3");
+const label4 = document.getElementById("val4");
 
-var allOptions = document.getElementsByClassName("allOptions");
+const allOptions = document.getElementsByClassName("allOptions");
 
-var resultSection = document.getElementById("resultSection");
+const resultSection = document.getElementById("resultSection");
 
 // ^ Functions -------
 
@@ -148,9 +148,9 @@ function next() {
   }
 }
 
-var noOfQuestions = document.getElementById("numberOfQuestion");
-var correctQuestion = document.getElementById("correctQuest");
-var message = document.getElementById("message");
+const noOfQuestions = document.getElementById("numberOfQuestion");
+const correctQuestion = document.getElementById("correctQuest");
+const message = document.getElementById("message");
 
 function showResult() {
   noOfQuestions.innerText = htmlQuiz.length;
@@ -164,43 +164,64 @@ function showResult() {
   }
 }
 
-var loginPage = document.getElementById("login-page");
-var mainPage = document.getElementById("main-page");
-var courseSection = document.getElementById("courseSection");
-var loginName = document.getElementById("loginName");
-var loginPass = document.getElementById("loginPassword");
-var version = document.getElementById("version");
-var clientName = document.getElementById("clientName");
+const loginPage = document.getElementById("login-page");
+const mainPage = document.getElementById("main-page");
+const courseSection = document.getElementById("courseSection");
+const loginName = document.getElementById("loginName");
+const loginPass = document.getElementById("loginPassword");
+const version = document.getElementById("version");
+const clientName = document.getElementById("clientName");
 
 courseSection.style.display = "none";
 clientName.style.display = "none";
+
+
+// Function to display registration form
+const loginUI = document.querySelector(".login-wrapper");
+const registerUI = document.querySelector(".register-wrapper");
+
+const openRegistrationForm = () => {
+  
+  loginUI.style.display = "none";
+  registerUI.style.display = "flex";
+}
+
+// Function to display Login form
+
+const openLoginForm = () => {
+  loginUI.style.display = "flex";
+  registerUI.style.display = "none";
+}
 
 function openForm() {
   mainPage.style.display = "none";
   loginPage.style.display = "flex";
 }
 
-function fillFields() {
-  loginName.value = "";
-  loginPass.value = "";
 
-  loginName.value = "Abdul Bari";
-  loginPass.value = "23354";
-}
+// Register in localStorage
 
-function openDashboard() {
-  quizQuestion.style.display = "none";
-  if (loginName.value === "Abdul Bari" && loginPass.value === "23354") {
-    mainPage.style.display = "none";
-    loginPage.style.display = "none";
-    version.style.display = "none";
-    clientName.style.display = "block";
-    courseSection.style.display = "block";
-  } else {
-    loginName.style.borderColor = "red";
-    loginPass.style.borderColor = "red";
-  }
-}
+const nameInputField = document.querySelector(".nameInput");
+const emailInputField = document.querySelector(".emailInput");
+const passwordInputField = document.querySelector(".passwordInput");
+
+
+
+
+// function openDashboard() {
+//   quizQuestion.style.display = "none";
+//   if (loginName.value === "Abdul Bari" && loginPass.value === "23354") {
+//     mainPage.style.display = "none";
+//     loginPage.style.display = "none";
+//     version.style.display = "none";
+//     clientName.style.display = "block";
+//     courseSection.style.display = "block";
+//   } else {
+//     loginName.style.borderColor = "red";
+//     loginPass.style.borderColor = "red";
+//   }
+// }
+
 
 var navbar = document.getElementById("mainNavbar");
 var timer = document.getElementById("quizTimer");
@@ -208,7 +229,7 @@ var quizQuestion = document.getElementById("quizQuestion");
 quizQuestion.style.display = "none";
 
 function startQuiz() {
-  const startingMinute = 3;
+  const startingMinute = 1;
   let time = startingMinute * 60;
 
   setInterval(function () {

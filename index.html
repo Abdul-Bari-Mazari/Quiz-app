@@ -53,7 +53,7 @@
           class="nav-link fw-bold fs-6"
           id="version"
           href="#"
-          >V 0.1 BETA</a
+          >Quiz Application</a
         >
 
         <a
@@ -98,17 +98,203 @@
 
     <!-- **************** Login **************** -->
     <div
-      class="flex-column align-items-center justify-content-center"
+      class="container align-items-center justify-content-center p-3 p-sm-5"
       style="display: none"
       id="login-page"
     >
       <div
+        class="row login-wrapper border border-1 border-secondary rounded-2 align-items-center justify-content-between bg-dark"
+        style="display: flex;"
+        >
+        <div class="col-6 loginImgContainer p-0 bg-primary rounded">
+          <img
+            class="loginImg rounded"
+            src="https://dxc.scene7.com/is/image/dxc/AdobeStock_649801194?$landscape_desktop$"
+            alt=""
+          />
+        </div>
+        <div
+          class="col-6 login-container border border-1 border-secondary rounded-2 p-3 bg-dark text-light"
+        >
+          <!-- Email input -->
+          <h1 class="text-center fw-bold mb-3">Login</h1>
+          <div
+            data-mdb-input-init
+            class="form-outline mb-4"
+          >
+            <label
+              class="form-label"
+              for="form2Example1"
+              >Email address</label
+            >
+            <input
+              type="email"
+              id="form2Example1"
+              class="emailInpit form-control"
+              placeholder="Enter your email..."
+            />
+          </div>
+
+          <!-- Password input -->
+          <div
+            data-mdb-input-init
+            class="form-outline mb-4"
+          >
+            <label
+              class="form-label"
+              for="form2Example2"
+              >Password</label
+            >
+            <input
+              type="password"
+              id="form2Example2"
+              class="passwordInput form-control"
+              placeholder="Enter your password..."
+
+            />
+          </div>
+
+          <!-- 2 column grid layout for inline styling -->
+          <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+              <!-- Checkbox -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="form2Example31"
+                  checked
+                />
+                <label
+                  class="form-check-label"
+                  for="form2Example31"
+                >
+                  Remember me
+                </label>
+              </div>
+            </div>
+
+            <div class="col">
+              <!-- Simple link -->
+              <a href="#!">Forgot password?</a>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <button
+            type="button"
+            data-mdb-button-init
+            data-mdb-ripple-init
+            class="btn btn-primary btn-block mb-4 w-100"
+          >
+            Sign in
+          </button>
+
+          <!-- Register buttons -->
+          <div class="text-center">
+            <p>Not a member? <a onclick="openRegistrationForm()" href="#!">Register</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- !Register -->
+      <div
+        class="row register-wrapper border border-1 border-secondary rounded-2 align-items-center justify-content-between bg-dark"
+      style="display: none;"
+        >
+        <div class="col-6 registerImgContainer p-0 bg-primary rounded">
+          <img
+            class="registerImg rounded-2"
+            src="https://images.ctfassets.net/wt70guc1rpin/wp-media-14644/afa09ff8ae0670132dd1aa119fa23939/bigstock-Man-Having-an-Online-Registrat-73738582.jpg"
+            alt=""
+          />
+        </div>
+        <div
+          class="col-6 register-container border border-1 border-secondary rounded p-3 bg-dark text-light"
+        >
+          <!-- Email input -->
+          <h1 class="text-center fw-bold mb-3">Register</h1>
+         
+          <div
+            data-mdb-input-init
+            class="form-outline mb-4"
+          >
+            <label
+              class="form-label"
+              for="form2Example1"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="form2Example1"
+              class="nameInput form-control"
+              placeholder="Enter name..."
+
+            />
+          </div>
+
+          <div
+            data-mdb-input-init
+            class="form-outline mb-4"
+          >
+            <label
+              class="form-label"
+              for="form2Example1"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="form2Example1"
+              class="emailInpit form-control"
+              placeholder="Enter email..."
+
+            />
+          </div>
+
+          <!-- Password input -->
+          <div
+            data-mdb-input-init
+            class="form-outline mb-4"
+          >
+            <label
+              class="form-label"
+              for="form2Example2"
+              >Password</label
+            >
+            <input
+              type="password"
+              id="form2Example2"
+              class="passwordInput form-control"
+              placeholder="Enter password..."
+
+            />
+          </div>
+
+          <!-- Register buttons -->
+          <div class="text-center">
+            <p>Already registered? <a onclick="openLoginForm()" href="#!">Sign in</a></p>
+          </div>
+          <!-- Submit button -->
+          <button
+            type="button"
+            data-mdb-button-init
+            data-mdb-ripple-init
+            class="btn btn-primary btn-block mb-4 w-100"
+          >
+            Register
+          </button>
+
+        </div>
+      </div>
+
+      <!-- <div
         class="container shadow-sm p-5 rounded d-flex flex-column align-items-center justify-content-center"
       >
         <div
           class="d-flex flex-wrap gap-3 align-items-center justify-content-center"
         >
-          <h2 class="text-warning fw-bold Login-head">LOG IN</h2>
+          <h2 class="text-warning fw-bold login-head">LOG IN</h2>
           <i
             onclick="fillFields()"
             class="fa-solid fa-key fs-4 text-light p-1 mb-1 bg-dark cursor-pointer rounded-circle"
@@ -161,7 +347,7 @@
             Login
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- *********** Course Section ************* -->
