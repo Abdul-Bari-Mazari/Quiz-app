@@ -325,7 +325,9 @@ const login = () => {
   storage = localStorage.getItem("Registered Users");
   arr = JSON.parse(storage);
   let flag2 = false;
-
+  if (!arr || arr.length) {
+    arr = [];
+  }
   for (let i = 0; i < arr.length; i++) {
     if (
       loginEmailInput.value.toLowerCase() === arr[i].register_email &&
