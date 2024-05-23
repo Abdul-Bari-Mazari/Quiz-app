@@ -175,38 +175,173 @@ const clientName = document.getElementById("clientName");
 courseSection.style.display = "none";
 clientName.style.display = "none";
 
-
 // Function to display registration form
 const loginUI = document.querySelector(".login-wrapper");
 const registerUI = document.querySelector(".register-wrapper");
 
 const openRegistrationForm = () => {
-  
   loginUI.style.display = "none";
   registerUI.style.display = "flex";
-}
+};
 
 // Function to display Login form
 
 const openLoginForm = () => {
   loginUI.style.display = "flex";
   registerUI.style.display = "none";
-}
+};
 
 function openForm() {
   mainPage.style.display = "none";
   loginPage.style.display = "flex";
 }
 
+// **** Register in localStorage ****
 
-// Register in localStorage
+const registerImg = document.querySelector(".registerImg"),
+  registerNameInputField = document.querySelector(".registerNameInput"),
+  emailInputField = document.querySelector(".registerEmailInput"),
+  passwordInputField = document.querySelector(".registerPasswordInput"),
+  successRegisterContainer = document.querySelector(
+    ".successRegisterContainer"
+  );
 
-const nameInputField = document.querySelector(".nameInput");
-const emailInputField = document.querySelector(".emailInput");
-const passwordInputField = document.querySelector(".passwordInput");
+// Function to avoid empty fields
 
+const isEmpty = (str) => {
+  return !str || !str.trim().length;
+};
 
+// Function to avoid numbers in name
 
+const noNumbersInName = (str) => {
+  for (let i = 0; i < registerNameInputField.value.length; i++) {
+    if (str[i].trim() >= "0" && str[i].trim() <= "9") {
+      return true;
+    }
+  }
+  return false;
+};
+
+// Function to prevent name input <=2
+
+const nameInputSize = (str) => {
+  if (str.length <= 2) {
+    return true;
+  }
+  return false;
+};
+
+// Function to avoid the first character of an email to be number
+
+const emailFirstCharacter = (str) => {
+  if (str[0] >= "0" && str[0] <= "9") {
+    return true;
+  }
+  return false;
+};
+
+// Function to check password length
+
+const passwordLength = (str) => {
+  if (str.length <= 5) {
+    return true;
+  }
+  return false;
+};
+
+let storage, arr, registeredUsers;
+
+// Function to check if the user is already registered
+const alreadyRegistered = () => {
+  storage = localStorage.getItem("Registered Users");
+  arr = JSON.parse(storage);
+  if (!arr || arr.length === 0) {
+    return false;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (
+      (arr[i] &&
+        registerNameInputField.value.toLowerCase() === arr[i].register_name) ||
+      emailInputField.value.toLowerCase() === arr[i].register_email
+    ) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const register = () => {
+  if (noNumbersInName(registerNameInputField.value)) {
+    alert("Name shouldn't contain numbers!");
+  } else if (emailFirstCharacter(emailInputField.value)) {
+    alert("Email can't start with a number!");
+  } else if (
+    isEmpty(registerNameInputField.value) &&
+    isEmpty(emailInputField.value) &&
+    isEmpty(passwordInputField.value)
+  ) {
+    alert("Please fill the fields!");
+  } else if (isEmpty(registerNameInputField.value)) {
+    alert("Name can't be empty!");
+  } else if (nameInputSize(registerNameInputField.value)) {
+    alert("Name should contain more than 2 characters!");
+  } else if (isEmpty(emailInputField.value)) {
+    alert("Email can't be empty!");
+  } else if (isEmpty(passwordInputField.value)) {
+    alert("Password can't be empty!");
+  } else if (passwordLength(passwordInputField.value)) {
+    alert("Password should contain atleast 6 characters!");
+  } else if (alreadyRegistered()) {
+    alert("The name or email already exists. Go to the Login Page.");
+  } else {
+    storage = localStorage.getItem("Registered Users");
+    arr = JSON.parse(storage) || [];
+    registeredUsers = {
+      register_name: registerNameInputField.value.toLowerCase(),
+      register_email: emailInputField.value.toLowerCase(),
+      register_password: passwordInputField.value,
+    };
+
+    arr.push(registeredUsers);
+    localStorage.setItem("Registered Users", JSON.stringify(arr));
+
+    successRegisterContainer.style.cssText = "display:flex !important";
+    registerImg.style.cssText = "height:528px !important";
+  }
+};
+
+const goToLogin = () => {
+  loginUI.style.display = "flex";
+  registerUI.style.display = "none";
+};
+
+// Login
+
+const loginEmailInput = document.querySelector(".loginEmailInput"),
+  loginPasswordInput = document.querySelector(".loginPasswordInput");
+
+const login = () => {
+  storage = localStorage.getItem("Registered Users");
+  arr = JSON.parse(storage);
+  let flag2 = false;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (
+      loginEmailInput.value.toLowerCase() === arr[i].register_email &&
+      loginPasswordInput.value === arr[i].register_password
+    ) {
+      alert("Login successful!");
+      flag2 = true;
+      loginPage.style.display = "none";
+      version.style.display = "none";
+      courseSection.style.display = "block";
+    }
+  }
+  if (!flag2) {
+    alert("Incorrect credentials!");
+  }
+};
 
 // function openDashboard() {
 //   quizQuestion.style.display = "none";
@@ -221,7 +356,6 @@ const passwordInputField = document.querySelector(".passwordInput");
 //     loginPass.style.borderColor = "red";
 //   }
 // }
-
 
 var navbar = document.getElementById("mainNavbar");
 var timer = document.getElementById("quizTimer");

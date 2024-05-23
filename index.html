@@ -108,7 +108,7 @@
         >
         <div class="col-6 loginImgContainer p-0 bg-primary rounded">
           <img
-            class="loginImg rounded"
+            class="loginImg rounded-2"
             src="https://dxc.scene7.com/is/image/dxc/AdobeStock_649801194?$landscape_desktop$"
             alt=""
           />
@@ -130,7 +130,7 @@
             <input
               type="email"
               id="form2Example1"
-              class="emailInpit form-control"
+              class="loginEmailInput form-control"
               placeholder="Enter your email..."
             />
           </div>
@@ -148,7 +148,7 @@
             <input
               type="password"
               id="form2Example2"
-              class="passwordInput form-control"
+              class="loginPasswordInput form-control"
               placeholder="Enter your password..."
 
             />
@@ -183,12 +183,11 @@
 
           <!-- Submit button -->
           <button
+          onclick="login()"
             type="button"
-            data-mdb-button-init
-            data-mdb-ripple-init
             class="btn btn-primary btn-block mb-4 w-100"
           >
-            Sign in
+            Login
           </button>
 
           <!-- Register buttons -->
@@ -211,7 +210,7 @@
           />
         </div>
         <div
-          class="col-6 register-container border border-1 border-secondary rounded p-3 bg-dark text-light"
+          class="col-6 register-container border border-1 border-secondary rounded-2 p-3 bg-dark text-light"
         >
           <!-- Email input -->
           <h1 class="text-center fw-bold mb-3">Register</h1>
@@ -228,7 +227,7 @@
             <input
               type="text"
               id="form2Example1"
-              class="nameInput form-control"
+              class="registerNameInput form-control"
               placeholder="Enter name..."
 
             />
@@ -246,7 +245,7 @@
             <input
               type="email"
               id="form2Example1"
-              class="emailInpit form-control"
+              class="registerEmailInput form-control"
               placeholder="Enter email..."
 
             />
@@ -265,7 +264,7 @@
             <input
               type="password"
               id="form2Example2"
-              class="passwordInput form-control"
+              class="registerPasswordInput form-control"
               placeholder="Enter password..."
 
             />
@@ -273,18 +272,21 @@
 
           <!-- Register buttons -->
           <div class="text-center">
-            <p>Already registered? <a onclick="openLoginForm()" href="#!">Sign in</a></p>
+            <p>Already registered? <a onclick="openLoginForm()" href="#!">Login</a></p>
           </div>
           <!-- Submit button -->
-          <button
+          <button onclick="register()"
             type="button"
-            data-mdb-button-init
-            data-mdb-ripple-init
             class="btn btn-primary btn-block mb-4 w-100"
           >
             Register
           </button>
 
+          <div class="successRegisterContainer flex-wrap justify-content-center gap-2 text-center"
+          style="display: none;">
+            <h5 class="successRegister text-light fw-bold">Successfully Registered!</h5>
+            <p>Go to <a onclick="goToLogin()" href="#">Login</a> page</p>
+          </div>
         </div>
       </div>
 
