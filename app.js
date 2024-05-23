@@ -66,8 +66,8 @@ const htmlQuiz = [
 
 // * Variables -------
 
-const questionCount = 0;
-const score = 0;
+let questionCount = 0;
+let score = 0;
 
 // ! Elements --------
 
@@ -92,6 +92,8 @@ const resultSection = document.getElementById("resultSection");
 
 // ^ Functions -------
 
+// Function to render the MCQs
+
 const renderQuestion = () => {
   question.innerHTML = htmlQuiz[questionCount].question;
 
@@ -108,11 +110,15 @@ const renderQuestion = () => {
 
 renderQuestion();
 
+// Function to 'de-select' all option on next MCQ
+
 const deSelect = () => {
   for (let i = 0; i < allOptions.length; i++) {
     allOptions[i].checked = false;
   }
 };
+
+// Next button event
 
 function next() {
   var checkedAns = false;
@@ -129,6 +135,12 @@ function next() {
       }
     }
   }
+
+  // The below code does the following:
+  // 1) Checks whether a choice is made or not. Shows the prompt if nothing selected
+  // 2) Increments the questionCount to check if there are MCQs remaining
+  // 3) If question are remaining the renders a new MCQ
+  // 4) If there are no MCQs remaining then show the result.
 
   if (!checkedAns) {
     alert("Please Make a selection!");
@@ -152,6 +164,7 @@ const noOfQuestions = document.getElementById("numberOfQuestion");
 const correctQuestion = document.getElementById("correctQuest");
 const message = document.getElementById("message");
 
+// Display result function
 function showResult() {
   noOfQuestions.innerText = htmlQuiz.length;
   correctQuestion.innerHTML = score;
@@ -179,7 +192,21 @@ clientName.style.display = "none";
 const loginUI = document.querySelector(".login-wrapper");
 const registerUI = document.querySelector(".register-wrapper");
 
+const registerImg = document.querySelector(".registerImg"),
+  registerNameInputField = document.querySelector(".registerNameInput"),
+  emailInputField = document.querySelector(".registerEmailInput"),
+  passwordInputField = document.querySelector(".registerPasswordInput"),
+  successRegisterContainer = document.querySelector(
+    ".successRegisterContainer"
+  );
+
 const openRegistrationForm = () => {
+  // Empty the registration fields
+  registerNameInputField.value = "";
+  emailInputField.value = "";
+  passwordInputField.value = "";
+
+  // Hide the login page and show the reg page
   loginUI.style.display = "none";
   registerUI.style.display = "flex";
 };
@@ -187,6 +214,9 @@ const openRegistrationForm = () => {
 // Function to display Login form
 
 const openLoginForm = () => {
+  loginEmailInput.value = "";
+  loginPasswordInput.value = "";
+
   loginUI.style.display = "flex";
   registerUI.style.display = "none";
 };
@@ -197,14 +227,6 @@ function openForm() {
 }
 
 // **** Register in localStorage ****
-
-const registerImg = document.querySelector(".registerImg"),
-  registerNameInputField = document.querySelector(".registerNameInput"),
-  emailInputField = document.querySelector(".registerEmailInput"),
-  passwordInputField = document.querySelector(".registerPasswordInput"),
-  successRegisterContainer = document.querySelector(
-    ".successRegisterContainer"
-  );
 
 // Function to avoid empty fields
 
@@ -312,6 +334,18 @@ const register = () => {
 };
 
 const goToLogin = () => {
+  // Empty the registration fields before shwoing login page
+  registerNameInputField.value = "";
+  emailInputField.value = "";
+  passwordInputField.value = "";
+
+  // Hide the successful container div
+  successRegisterContainer.style.display = "none";
+
+  // Change the size of registration img to normal
+  registerImg.style.cssText = "height:489px !important";
+
+  // Hide the registration page and show login page
   loginUI.style.display = "flex";
   registerUI.style.display = "none";
 };
@@ -325,7 +359,8 @@ const login = () => {
   storage = localStorage.getItem("Registered Users");
   arr = JSON.parse(storage);
   let flag2 = false;
-  if (!arr || arr.length) {
+
+  if (!arr || arr.length === 0) {
     arr = [];
   }
   for (let i = 0; i < arr.length; i++) {
@@ -345,25 +380,12 @@ const login = () => {
   }
 };
 
-// function openDashboard() {
-//   quizQuestion.style.display = "none";
-//   if (loginName.value === "Abdul Bari" && loginPass.value === "23354") {
-//     mainPage.style.display = "none";
-//     loginPage.style.display = "none";
-//     version.style.display = "none";
-//     clientName.style.display = "block";
-//     courseSection.style.display = "block";
-//   } else {
-//     loginName.style.borderColor = "red";
-//     loginPass.style.borderColor = "red";
-//   }
-// }
-
-var navbar = document.getElementById("mainNavbar");
-var timer = document.getElementById("quizTimer");
-var quizQuestion = document.getElementById("quizQuestion");
+let navbar = document.getElementById("mainNavbar");
+let timer = document.getElementById("quizTimer");
+let quizQuestion = document.getElementById("quizQuestion");
 quizQuestion.style.display = "none";
 
+// Show the Quiz section; start the timer
 function startQuiz() {
   const startingMinute = 1;
   let time = startingMinute * 60;
@@ -385,5 +407,6 @@ function startQuiz() {
   }, 1000);
 
   courseSection.style.display = "none";
+  navbar.style.display = "none";
   quizQuestion.style.display = "block";
 }
