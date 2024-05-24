@@ -5,7 +5,16 @@ const htmlQuiz = [
     optionB: "MICROSOFT",
     optionC: "MOZILLA",
     optionD: "WORLD WIDE WEB",
-    correctAnswer: "WORLD WIDE WEB",
+    correctAnswer: "WORLD WIDE WEB", 
+  },
+  
+  {
+    question: "Who is the founder of javascript?    ",
+    optionA: "Abdul Bari",
+    optionB: "Sir Ghous Ahmed",
+    optionC: "Dr Shafiq",
+    optionD: "Brenden Eich",
+    correctAnswer: "Brenden Eich", 
   },
 
   {
