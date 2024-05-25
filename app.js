@@ -1,20 +1,38 @@
 const htmlQuiz = [
   {
-    question: "Who is making the Web standards?    ",
+    question: "Who is making the Web standards?",
     optionA: "GOOGLE",
     optionB: "MICROSOFT",
     optionC: "MOZILLA",
     optionD: "WORLD WIDE WEB",
-    correctAnswer: "WORLD WIDE WEB", 
+    correctAnswer: "WORLD WIDE WEB",
   },
-  
+
   {
-    question: "Who is the founder of javascript?    ",
+    question: "Who is the founder of JavaScript?",
     optionA: "Abdul Bari",
-    optionB: "Sir Ghous Ahmed",
-    optionC: "Dr Shafiq",
+    optionB: "Abdul Haseeb",
+    optionC: "Narendra Modi",
     optionD: "Brenden Eich",
-    correctAnswer: "Brenden Eich", 
+    correctAnswer: "Brenden Eich",
+  },
+
+  {
+    question: "JavaScript is a ___ language?",
+    optionA: "Object Oriented",
+    optionB: "Object Based",
+    optionC: "Procedural",
+    optionD: "None of the above",
+    correctAnswer: "Object Oriented",
+  },
+
+  {
+    question: "How to write a comment in JavaScript",
+    optionA: "/* */",
+    optionB: "//",
+    optionC: "#",
+    optionD: "$$",
+    correctAnswer: "//",
   },
 
   {
@@ -73,6 +91,15 @@ const htmlQuiz = [
   },
 ];
 
+// Dark / light mode switch function
+const myFunction = () => {
+  // let pageBody = document.getElementById("pageBody");
+  let element = document.body;
+  // pageBody.style.backgroundColor = "white"
+  element.dataset.bsTheme =
+    element.dataset.bsTheme == "light" ? "dark" : "light";
+};
+
 // * Variables -------
 
 let questionCount = 0;
@@ -104,6 +131,9 @@ const resultSection = document.getElementById("resultSection");
 // Function to render the MCQs
 
 const renderQuestion = () => {
+  let mcqCount = document.getElementById("mcqCount");
+  mcqCount.innerHTML = `${questionCount + 1}) `;
+
   question.innerHTML = htmlQuiz[questionCount].question;
 
   option1.value = htmlQuiz[questionCount].optionA;
@@ -127,18 +157,36 @@ const deSelect = () => {
   }
 };
 
+// Turn option lightgray on selection
+
+let question__options = document.querySelectorAll(".question__option");
+
+question__options.forEach((eachOption) => {
+  let input = eachOption.querySelector("input");
+
+  input.addEventListener("click", () => {
+    question__options.forEach((option) => {
+      option.style.backgroundColor = "rgb(236, 239, 241)";
+    });
+
+    if (input.checked) {
+      eachOption.style.backgroundColor = "lightgray";
+    }
+  });
+});
+
 // Next button event
 
 function next() {
+  //  To reset the color of option on next MCQ {
+  question__options.forEach((option) => {
+    option.style.backgroundColor = "rgb(236, 239, 241)";
+  }); // }
+
   var checkedAns = false;
   for (var i = 0; i < allOptions.length; i++) {
-    // console.log("Length of allOptions: ", allOptions.length);
     if (allOptions[i].checked) {
       checkedAns = true;
-      console.log("The 1st if");
-
-      console.log("Selected Option: ", allOptions[i].value);
-
       if (allOptions[i].value === htmlQuiz[questionCount].correctAnswer) {
         score++;
       }
@@ -158,12 +206,11 @@ function next() {
       questionCount++;
       deSelect();
       renderQuestion();
-      console.log("Score", score);
     } else {
       resultSection.style.display = "flex";
       resultSection.style.alignItems = "center";
       resultSection.style.justifyContent = "center";
-      quizMainWindow.style.display = "none";
+      quizQuestion.style.display = "none";
       showResult();
     }
   }
@@ -230,7 +277,7 @@ const openLoginForm = () => {
   registerUI.style.display = "none";
 };
 
-function openForm() {
+function openDashboard() {
   mainPage.style.display = "none";
   loginPage.style.display = "flex";
 }
@@ -396,7 +443,7 @@ quizQuestion.style.display = "none";
 
 // Show the Quiz section; start the timer
 function startQuiz() {
-  const startingMinute = 1;
+  const startingMinute = 3;
   let time = startingMinute * 60;
 
   setInterval(function () {
@@ -412,6 +459,12 @@ function startQuiz() {
     }
     if (time <= 0) {
       timer.innerHTML = "Time is up!";
+      quizMainWindow.style.display = "none";
+      quizQuestion.style.display = "none";
+      resultSection.style.display = "flex";
+      resultSection.style.alignItems = "center";
+      resultSection.style.justifyContent = "center";
+      showResult();
     }
   }, 1000);
 
@@ -419,3 +472,12 @@ function startQuiz() {
   navbar.style.display = "none";
   quizQuestion.style.display = "block";
 }
+
+// To show current year in footer
+
+let footerYear = document.getElementById("footerYear");
+
+const date = new Date();
+let currentYear = date.getFullYear();
+
+footerYear.innerText = currentYear;

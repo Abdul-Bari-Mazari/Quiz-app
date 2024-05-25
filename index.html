@@ -31,7 +31,10 @@
     />
   </head>
 
-  <body>
+  <body
+    data-bs-theme="dark"
+    id="pageBody"
+  >
     <!-- ************* Navbar ***************** -->
 
     <nav
@@ -43,18 +46,30 @@
           href=""
           class="navbar-brand"
           ><img
-            src="/images/smit.png"
+            src="./images/smit.png"
             alt=""
             class=""
           />
         </a>
+        <div class="d-flex align-items-center justify-content-center">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input p-2"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckChecked"
+              checked
+              onclick="myFunction()"
+            />
+          </div>
 
-        <a
-          class="nav-link fw-bold fs-6"
-          id="version"
-          href="#"
-          >Quiz Application</a
-        >
+          <a
+            class="nav-link fw-bold fs-6"
+            id="version"
+            href="#"
+            >Quiz Application</a
+          >
+        </div>
 
         <a
           class="nav-link fw-bold fs-4"
@@ -87,7 +102,7 @@
             <span class="fw-bold">Start your exam here:</span>
           </h5>
           <button
-            onclick="openForm()"
+            onclick="openDashboard()"
             class="btn btn-primary fw-bold"
           >
             Continue with Login
@@ -104,8 +119,8 @@
     >
       <div
         class="row login-wrapper border border-1 border-secondary rounded-2 align-items-center justify-content-between bg-dark"
-        style="display: flex;"
-        >
+        style="display: flex"
+      >
         <div class="col-6 loginImgContainer p-0 bg-primary rounded">
           <img
             class="loginImg rounded-2"
@@ -150,7 +165,6 @@
               id="loginPass"
               class="loginPasswordInput form-control"
               placeholder="Enter your password..."
-
             />
           </div>
 
@@ -183,7 +197,7 @@
 
           <!-- Submit button -->
           <button
-          onclick="login()"
+            onclick="login()"
             type="button"
             class="btn btn-primary btn-block mb-4 w-100"
           >
@@ -192,7 +206,14 @@
 
           <!-- Register buttons -->
           <div class="text-center">
-            <p>Not a member? <a onclick="openRegistrationForm()" href="#!">Register</a></p>
+            <p>
+              Not a member?
+              <a
+                onclick="openRegistrationForm()"
+                href="#!"
+                >Register</a
+              >
+            </p>
           </div>
         </div>
       </div>
@@ -200,8 +221,8 @@
       <!-- !Register -->
       <div
         class="row register-wrapper border border-1 border-secondary rounded-2 align-items-center justify-content-between bg-dark"
-      style="display: none;"
-        >
+        style="display: none"
+      >
         <div class="col-6 registerImgContainer p-0 bg-primary rounded">
           <img
             class="registerImg rounded-2"
@@ -214,7 +235,7 @@
         >
           <!-- Email input -->
           <h1 class="text-center fw-bold mb-3">Register</h1>
-         
+
           <div
             data-mdb-input-init
             class="form-outline mb-4"
@@ -229,7 +250,6 @@
               id="registerName"
               class="registerNameInput form-control"
               placeholder="Enter name..."
-
             />
           </div>
 
@@ -247,7 +267,6 @@
               id="registerEmail"
               class="registerEmailInput form-control"
               placeholder="Enter email..."
-
             />
           </div>
 
@@ -266,90 +285,48 @@
               id="registerPass"
               class="registerPasswordInput form-control"
               placeholder="Enter password..."
-
             />
           </div>
 
           <!-- Register buttons -->
           <div class="text-center">
-            <p>Already registered? <a onclick="openLoginForm()" href="#!">Login</a></p>
+            <p>
+              Already registered?
+              <a
+                onclick="openLoginForm()"
+                href="#!"
+                >Login</a
+              >
+            </p>
           </div>
           <!-- Submit button -->
-          <button onclick="register()"
+          <button
+            onclick="register()"
             type="button"
             class="btn btn-primary btn-block mb-4 w-100"
           >
             Register
           </button>
 
-          <div class="successRegisterContainer flex-wrap justify-content-center gap-2 text-center"
-          style="display: none;">
-            <h5 class="successRegister text-light fw-bold">Successfully Registered!</h5>
-            <p>Go to <a onclick="goToLogin()" href="#">Login</a> page</p>
+          <div
+            class="successRegisterContainer flex-wrap justify-content-center gap-2 text-center"
+            style="display: none"
+          >
+            <h5 class="successRegister text-light fw-bold">
+              Successfully Registered!
+            </h5>
+            <p>
+              Go to
+              <a
+                onclick="goToLogin()"
+                href="#"
+                >Login</a
+              >
+              page
+            </p>
           </div>
         </div>
       </div>
-
-      <!-- <div
-        class="container shadow-sm p-5 rounded d-flex flex-column align-items-center justify-content-center"
-      >
-        <div
-          class="d-flex flex-wrap gap-3 align-items-center justify-content-center"
-        >
-          <h2 class="text-warning fw-bold login-head">LOG IN</h2>
-          <i
-            onclick="fillFields()"
-            class="fa-solid fa-key fs-4 text-light p-1 mb-1 bg-dark cursor-pointer rounded-circle"
-          ></i>
-          (Click the key for password)
-        </div>
-        <div class="d-flex align-items-center justify-content-center">
-          <div class="mt-4 w-100">
-            <div class="form-floating mb-3 border border-dark border-1 rounded">
-              <input
-                type="text"
-                value="Abdul Bari"
-                size="20"
-                name=""
-                id="loginName"
-                class="form-control fw-bold"
-              />
-              <label
-                for="loginName"
-                class="text-center fs-4 form-label mb-4"
-                >Name:</label
-              >
-            </div>
-
-            <div class="form-floating border border-dark border-1 rounded">
-              <input
-                type="password"
-                value="23354"
-                size="20"
-                name=""
-                id="loginPassword"
-                class="form-control fw-bold"
-              />
-              <label
-                for="loginPassword"
-                class="fs-4 form-label"
-                >Password:</label
-              >
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <button class="btn back-btn btn-dark mt-5 px-4">Back</button>
-
-          <button
-            onclick="openDashboard()"
-            class="btn btn-primary mt-5 px-3"
-          >
-            Login
-          </button>
-        </div>
-      </div> -->
     </div>
 
     <!-- *********** Course Section ************* -->
@@ -489,7 +466,7 @@
     </section>
 
     <!-- ********* Quiz Questions (Quiz Start) ********** -->
-    <section>
+    <section class="quiz-section">
       <div
         class="container pb-5"
         id="quizQuestion"
@@ -512,54 +489,64 @@
 
         <div id="quizWindow">
           <ul class="fs-4">
-            <li><b id="question">Question will be here</b></li>
-
             <li>
+              <span
+                class="fw-bold"
+                id="mcqCount"
+              ></span
+              ><b id="question">Question will be here</b>
+            </li>
+
+            <li class="question__option">
               <input
                 id="option1"
                 class="allOptions"
                 name="quizOption"
                 type="radio"
               /><label
+                class="allLabels"
                 for="option1"
                 id="val1"
                 >Option 1</label
               >
             </li>
 
-            <li>
+            <li class="question__option">
               <input
                 id="option2"
                 class="allOptions"
                 name="quizOption"
                 type="radio"
               /><label
+                class="allLabels"
                 for="option2"
                 id="val2"
                 >Option 2</label
               >
             </li>
 
-            <li>
+            <li class="question__option">
               <input
                 id="option3"
                 class="allOptions"
                 name="quizOption"
                 type="radio"
               /><label
+                class="allLabels"
                 for="option3"
                 id="val3"
                 >Option 3</label
               >
             </li>
 
-            <li>
+            <li class="question__option">
               <input
                 id="option4"
                 class="allOptions"
                 name="quizOption"
                 type="radio"
               /><label
+                class="allLabels"
                 for="option4"
                 id="val4"
                 >Option 4</label
@@ -578,14 +565,13 @@
             Submit
           </button>
         </div>
-        <div id="results"></div>
       </div>
     </section>
 
     <!--Result Section >-->
     <section
       id="resultSection"
-      style="display: none; height: 75vh"
+      style="display: none"
     >
       <div class="showResult">
         <h1
@@ -614,10 +600,11 @@
       </div>
     </section>
 
-    <footer class="bg-white text-center p-5 text-dark position-relative">
+    <footer class="bg-white text-center p-5 text-dark position-relative w-100">
       <div class="container">
         <p class="fw-bold">
-          DEVELOPED BY <span class="text-primary">ABDUL BARI</span>
+          Developed By<span class="text-primary"> SW Team</span> | All rights
+          reserved | <span id="footerYear"></span>
         </p>
       </div>
     </footer>
