@@ -12,7 +12,7 @@ const htmlQuiz = [
     question: "Who is the founder of javascript?    ",
     optionA: "Abdul Bari",
     optionB: "Sir Ghous Ahmed",
-    optionC: "Dr Shafiq",
+    optionC: "Abdul Haseeb",
     optionD: "Brenden Eich",
     correctAnswer: "Brenden Eich", 
   },
