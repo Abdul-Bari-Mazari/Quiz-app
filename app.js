@@ -416,6 +416,7 @@ const login = () => {
 };
 
 let navbar = document.getElementById("mainNavbar");
+let footer = document.querySelector("footer");
 let timer = document.getElementById("quizTimer");
 let quizQuestion = document.getElementById("quizQuestion");
 quizQuestion.style.display = "none";
@@ -449,6 +450,7 @@ function startQuiz() {
 
   courseSection.style.display = "none";
   navbar.style.display = "none";
+  footer.style.display = "none";
   quizQuestion.style.display = "block";
 }
 
