@@ -3,16 +3,37 @@
   src: url(./font/static/JosefinSans-Light.ttf);
 }
 
+:root {
+  --bg-color-light: rgb(236, 239, 241);
+  --text-color-light: black;
+  --bg-color-dark: #333333;
+  --text-color-dark: white;
+
+  /* Join button */
+
+  --btn-bg-color-light: white;
+  --btn-bg-color-dark: #353434;
+  --btn-text-color-light: #0d0d0d;
+  --btn-text-color-dark: white;
+
+  /* Option hover colors */
+  --bg-hover-dark: rgb(34 87 105);
+  --bg-hover-light: rgb(199, 216, 222);
+}
+
 * {
   font-family: JosefSans;
 }
 
-/* body {
-  height: 100vh !important;
-} */
-
 section {
-  background-color: rgb(236, 239, 241);
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  transition: all 0.5s;
+}
+
+.card {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
 }
 
 h3 {
@@ -48,18 +69,15 @@ li {
 }
 
 .question__option:hover {
-  background-color: rgb(199, 216, 222) !important;
+  background-color: var(--bg-hover-light) !important;
 }
 
-/* .question__option:active {
-  background-color: lightgray;
-} */
-
-/* Navbar */
-
 .navbar {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px 0px,
     rgb(218, 220, 224) 0px -1px 0px 0px inset;
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .navbar-brand img {
@@ -109,12 +127,12 @@ li {
 }
 
 #login-page {
-  height: 75vh;
+  height: 80vh;
 }
 
 #quizQuestion,
 #resultSection {
-  height: 85vh;
+  height: 90vh;
 }
 
 /* Available course card */
@@ -133,6 +151,12 @@ li {
 
 .back-btn {
   margin-right: 45px;
+}
+
+.join-btn {
+  background-color: var(--btn-bg-color-light);
+  color: var(--btn-text-color-light);
+  border: 1px solid #1586dc;
 }
 
 .join-btn:active {
@@ -154,14 +178,46 @@ li {
 /* Footer */
 
 footer {
-  height: 80px !important;
-  border: 1px solid grey !important;
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  height: 90px;
+  border: none;
   border-bottom: none !important;
-  box-shadow: 0 -3px 10px 3px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 -3px 7px 0px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.5s;
 }
 
 footer p {
   margin-top: revert-layer;
+}
+
+[data-theme="dark"] .navbar {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+[data-theme="dark"] section {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+[data-theme="dark"] .join-btn {
+  background-color: var(--btn-bg-color-dark);
+  color: var(--btn-text-color-dark);
+}
+
+[data-theme="dark"] .question__option:hover {
+  background-color: var(--bg-hover-dark) !important;
+}
+
+[data-theme="dark"] footer {
+  background-color: var(--bg-color-dark) !important;
+  color: var(--text-color-dark) !important;
 }
 
 /* Media queries */
@@ -177,15 +233,3 @@ footer p {
     width: 320px;
   }
 }
-
-/* @media (min-width: 764px) {
-    input {
-        width: 380px !important;
-    }
-}
-
-@media (max-width: 764px) {
-    input {
-        width: 320px !important;
-    }
-} */

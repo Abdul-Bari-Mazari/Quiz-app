@@ -91,13 +91,15 @@ const htmlQuiz = [
   },
 ];
 
-// Dark / light mode switch function
+const themeToggle = document.getElementById("themeToggle");
+const body = document.body;
+
 const myFunction = () => {
-  // let pageBody = document.getElementById("pageBody");
-  let element = document.body;
-  // pageBody.style.backgroundColor = "white"
-  element.dataset.bsTheme =
-    element.dataset.bsTheme == "light" ? "dark" : "light";
+  if (themeToggle.checked) {
+    body.setAttribute("data-theme", "dark");
+  } else {
+    body.setAttribute("data-theme", "light");
+  }
 };
 
 // * Variables -------
@@ -157,33 +159,10 @@ const deSelect = () => {
   }
 };
 
-// Turn option lightgray on selection
-
-let question__options = document.querySelectorAll(".question__option");
-
-question__options.forEach((eachOption) => {
-  let input = eachOption.querySelector("input");
-
-  input.addEventListener("click", () => {
-    question__options.forEach((option) => {
-      option.style.backgroundColor = "rgb(236, 239, 241)";
-    });
-
-    if (input.checked) {
-      eachOption.style.backgroundColor = "lightgray";
-    }
-  });
-});
-
 // Next button event
 
 function next() {
-  //  To reset the color of option on next MCQ {
-  question__options.forEach((option) => {
-    option.style.backgroundColor = "rgb(236, 239, 241)";
-  }); // }
-
-  var checkedAns = false;
+  let checkedAns = false;
   for (var i = 0; i < allOptions.length; i++) {
     if (allOptions[i].checked) {
       checkedAns = true;
