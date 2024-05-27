@@ -12,7 +12,7 @@ const htmlQuiz = [
     question: "Who is the founder of JavaScript?",
     optionA: "Abdul Bari",
     optionB: "Abdul Haseeb",
-    optionC: "Narendra Modi",
+    optionC: "Dr Shafique",
     optionD: "Brenden Eich",
     correctAnswer: "Brenden Eich",
   },
@@ -198,19 +198,30 @@ function next() {
 const noOfQuestions = document.getElementById("numberOfQuestion");
 const correctQuestion = document.getElementById("correctQuest");
 const message = document.getElementById("message");
+var first50Bar = document.getElementById('first50-bar');
+var resultPercentage = document.getElementById('resultPercentage');
+var valueBar = document.getElementById('valueBar');
+let progressBar = document.getElementById('progressBar');
 
 // Display result function
 function showResult() {
   noOfQuestions.innerText = htmlQuiz.length;
   correctQuestion.innerHTML = score;
-  if (score < 5) {
-    message.innerHTML = "Sorry, You have failed!";
-    message.style.color = "red";
-  } else {
-    message.innerHTML = "Congratulations! You have passed!";
-    message.style.color = "green";
+  let totalMCQs = 10;
+  let result = score/(totalMCQs) * 100; 
+
+  if (result < 69) {
+    resultPercentage.innerText = `${result}%`;
+    first50Bar.style.backgroundColor = "red";
+    valueBar.style.border ="0.45em solid red";
   }
+  else {
+    resultPercentage.innerText = `${result}%`;
+    first50Bar.style.backgroundColor = "green";
+    valueBar.style.border ="0.45em solid green";
+  } 
 }
+
 
 const loginPage = document.getElementById("login-page");
 const mainPage = document.getElementById("main-page");
