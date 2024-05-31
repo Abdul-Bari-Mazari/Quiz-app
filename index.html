@@ -555,34 +555,38 @@
     <!--Result Section >-->
     <section
       id="resultSection"
-      style="display: none"
+      style="display: none; height: 75vh"
     >
-      <div class="showResult">
+      <div class="showResult d-flex align-items-center justify-content-between flex-column">
         <h1
           class="display-4 text-center mt-4 pt-3"
           style="text-decoration: underline"
         >
-          Result
+          RESULT
         </h1>
-
-        <div class="totalQuestion d-flex justify-content-between px-5">
-          <h2>Total Question</h2>
+        
+          
+            <div class="progress-circle over50 p77 ">
+              <span id="resultPercentage"></span>
+              <div class="left-half-clipper">
+                 <div class="first50-bar" id="first50-bar"></div>
+                 <div class="value-bar" id="valueBar"></div>
+              </div>
+           </div>
+           
+          <h2 class="totalQuestion mt-2">Total Question</h2>
           <h3 id="numberOfQuestion"></h3>
-        </div>
 
-        <div class="correctQuestions d-flex justify-content-between px-5">
-          <h2>Correct Questions</h2>
+          <h2 class="correctQuestion">Correct Questions</h2>
           <h3 id="correctQuest"></h3>
-        </div>
 
-        <div>
-          <h3
+        <!-- <h3
             class="text-center"
             id="message"
-          ></h3>
-        </div>
+          ></h3> -->        
       </div>
     </section>
+
 
     <footer class="align-items-center justify-content-center p-3" style="display: flex;">
       
