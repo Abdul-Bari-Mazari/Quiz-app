@@ -91,16 +91,37 @@ const htmlQuiz = [
   },
 ];
 
-const themeToggle = document.getElementById("themeToggle");
-const body = document.body;
+// Switch theme
 
-const myFunction = () => {
-  if (themeToggle.checked) {
-    body.setAttribute("data-theme", "dark");
-  } else {
-    body.setAttribute("data-theme", "light");
-  }
+const themeToggle = document.getElementById("themeToggle"),
+  themeToggle__responsive = document.getElementById("themeToggle__responsive"),
+  body = document.body;
+
+const applyTheme = (theme) => {
+  body.setAttribute("data-theme", theme);
 };
+
+const syncSwitches = (isDarkMode) => {
+  themeToggle.checked = isDarkMode;
+  themeToggle__responsive.checked = isDarkMode;
+};
+
+const toggleTheme = (event) => {
+  const isDarkMode = event.target.checked;
+
+  if (isDarkMode) {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
+
+  syncSwitches(isDarkMode);
+};
+
+themeToggle.addEventListener("click", (event) => toggleTheme(event));
+themeToggle__responsive.addEventListener("click", (event) =>
+  toggleTheme(event)
+);
 
 // * Variables -------
 
@@ -198,30 +219,28 @@ function next() {
 const noOfQuestions = document.getElementById("numberOfQuestion");
 const correctQuestion = document.getElementById("correctQuest");
 const message = document.getElementById("message");
-var first50Bar = document.getElementById('first50-bar');
-var resultPercentage = document.getElementById('resultPercentage');
-var valueBar = document.getElementById('valueBar');
-let progressBar = document.getElementById('progressBar');
+var first50Bar = document.getElementById("first50-bar");
+var resultPercentage = document.getElementById("resultPercentage");
+var valueBar = document.getElementById("valueBar");
+let progressBar = document.getElementById("progressBar");
 
 // Display result function
 function showResult() {
   noOfQuestions.innerText = htmlQuiz.length;
   correctQuestion.innerHTML = score;
   let totalMCQs = 10;
-  let result = score/(totalMCQs) * 100; 
+  let result = (score / totalMCQs) * 100;
 
   if (result < 69) {
     resultPercentage.innerText = `${result}%`;
     first50Bar.style.backgroundColor = "red";
-    valueBar.style.border ="0.45em solid red";
-  }
-  else {
+    valueBar.style.border = "0.45em solid red";
+  } else {
     resultPercentage.innerText = `${result}%`;
     first50Bar.style.backgroundColor = "green";
-    valueBar.style.border ="0.45em solid green";
-  } 
+    valueBar.style.border = "0.45em solid green";
+  }
 }
-
 
 const loginPage = document.getElementById("login-page");
 const mainPage = document.getElementById("main-page");
@@ -232,7 +251,6 @@ const version = document.getElementById("version");
 const clientName = document.getElementById("clientName");
 
 courseSection.style.display = "none";
-clientName.style.display = "none";
 
 // Function to display registration form
 const loginUI = document.querySelector(".login-wrapper");

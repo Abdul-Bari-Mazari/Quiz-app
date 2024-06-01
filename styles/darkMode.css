@@ -1,0 +1,45 @@
+[data-theme="dark"] .navbar {
+  background-color: var(--primary-bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+[data-theme="dark"] .nav-link {
+  color: var(--text-color-dark);
+}
+
+[data-theme="dark"] section {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+  border: 1px solid rgb(184, 184, 184);
+}
+
+[data-theme="dark"] .join-btn {
+  background-color: var(--btn-bg-color-dark);
+  color: var(--btn-text-color-dark);
+}
+
+[data-theme="dark"] .join-btn:hover {
+  background-color: #0c6ab2;
+}
+
+[data-theme="dark"] .question__option:hover {
+  background-color: var(--bg-hover-dark) !important;
+}
+
+[data-theme="dark"] footer {
+  background-color: var(--primary-bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+
+/* section__themeSwitch */
+
+[data-theme='dark'] .section__themeSwitch {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}

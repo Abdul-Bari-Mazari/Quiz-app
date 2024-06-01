@@ -27,7 +27,19 @@
     <title>SMIT - Quiz Application</title>
     <link
       rel="stylesheet"
-      href="style.css"
+      href="./styles/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./styles/progressBar.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./styles/darkMode.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./styles/checkbox.css"
     />
   </head>
 
@@ -43,41 +55,51 @@
           href=""
           class="navbar-brand"
           ><img
-            src="./images/smit.png"
+            src="https://static.vecteezy.com/system/resources/previews/004/753/002/non_2x/custom-coding-icon-shadowed-detailed-custom-coding-logo-free-vector.jpg"
             alt=""
             class=""
           />
         </a>
+
         <div class="d-flex align-items-center justify-content-center">
-          <div class="form-check form-switch">
-            <input
-              class="form-check-input p-2"
-              type="checkbox"
-              role="switch"
-              id="themeToggle"
-              onclick="myFunction()"
-            />
+          <div class="checkbox-wrapper-54 navbar__themeSwitch">
+            <label class="switch">
+              <input
+                id="themeToggle"
+                type="checkbox"
+    
+              />
+              <span class="slider"></span>
+            </label>
           </div>
 
           <a
-            class="nav-link fw-bold fs-5 text-dark"
+            class="nav-link fw-bold"
             id="version"
             href="#"
-            >Quiz Application</a
+            ><span class="q">Q</span>uiz Application</a
           >
         </div>
 
-        <a
-          class="nav-link fw-bold fs-4"
-          id="clientName"
-          href="#"
-          >Abdul Bari</a
-        >
       </div>
     </nav>
 
     <!-- ************* Main Page ***************** -->
 
+    <div class="section__themeSwitch d-none align-items-center justify-content-center p-2 gap-2">
+      <p style="margin-bottom: 0;">Switch Mode:</p>
+        <div class="checkbox-wrapper-54">
+          <label class="switch">
+            <input
+              id="themeToggle__responsive"
+              type="checkbox"
+   
+            />
+            <span class="slider"></span>
+          </label>
+        </div>
+    </div>
+    
     <section
       id="main-page"
       class="p-1 py-5 p-md-5 text-center"
@@ -121,7 +143,7 @@
           <div class="col-6 loginImgContainer p-0 bg-primary rounded">
             <img
               class="loginImg rounded-2"
-              src="https://dxc.scene7.com/is/image/dxc/AdobeStock_649801194?$landscape_desktop$"
+              src="https://www.iconpacks.net/icons/1/free-user-group-icon-296-thumb.png"
               alt=""
             />
           </div>
@@ -223,7 +245,7 @@
           <div class="col-6 registerImgContainer p-0 bg-primary rounded">
             <img
               class="registerImg rounded-2"
-              src="https://images.ctfassets.net/wt70guc1rpin/wp-media-14644/afa09ff8ae0670132dd1aa119fa23939/bigstock-Man-Having-an-Online-Registrat-73738582.jpg"
+              src="./images/register-icon.png"
               alt=""
             />
           </div>
@@ -348,32 +370,16 @@
           <div class="card p-3 col-12 col-md-5 col-lg-3">
             <div class="card-body">
               <h5 class="card-title fw-bold fs-4">Python</h5>
-              <p
-                class="fw-bold"
-              >
-                1 Subjects
-              </p>
-              <button
-                class="join-btn fw-bold w-100 p-1"
-              >
-                Join
-              </button>
+              <p class="fw-bold">1 Subjects</p>
+              <button class="join-btn fw-bold w-100 p-1">Join</button>
             </div>
           </div>
 
           <div class="card p-3 col-12 col-md-5 col-lg-3">
             <div class="card-body">
               <h5 class="card-title fw-bold fs-4">Web and App Crash Course</h5>
-              <p
-                class="fw-bold"
-              >
-                2 Subjects
-              </p>
-              <button
-                class="join-btn fw-bold w-100 p-1"
-              >
-                Join
-              </button>
+              <p class="fw-bold">2 Subjects</p>
+              <button class="join-btn fw-bold w-100 p-1">Join</button>
             </div>
           </div>
 
@@ -382,47 +388,25 @@
               <h5 class="card-title fw-bold fs-4">
                 Web and App Development (Madaris)
               </h5>
-              <p
-                class="fw-bold"
-              >
-                3 Subjects
-              </p>
-              <button
-                class="join-btn fw-bold w-100 p-1"
-              >
-                Join
-              </button>
+              <p class="fw-bold">3 Subjects</p>
+              <button class="join-btn fw-bold w-100 p-1">Join</button>
             </div>
           </div>
 
           <div class="card p-3 col-12 col-md-5 col-lg-3">
             <div class="card-body">
               <h5 class="card-title fw-bold fs-4">TypeScript</h5>
-              <p
-                class="fw-bold"
-              >
-                1 Subjects
-              </p>
-              <button
-                class="join-btn fw-bold w-100 p-1"
-              >
-                Join
-              </button>
+              <p class="fw-bold">1 Subjects</p>
+              <button class="join-btn fw-bold w-100 p-1">Join</button>
             </div>
           </div>
 
-          <div
-            class="card available-course p-3 col-12 col-md-5 col-lg-3"
-          >
+          <div class="card available-course p-3 col-12 col-md-5 col-lg-3">
             <div class="card-body">
               <h5 class="card-title fw-bold fs-4">
                 Web and Mobile Hybrid App Development
               </h5>
-              <p
-                class="fw-bold"
-              >
-                4 Subjects
-              </p>
+              <p class="fw-bold">4 Subjects</p>
               <button
                 onclick="startQuiz()"
                 class="join-btn fw-bold w-100 p-1"
@@ -435,16 +419,8 @@
           <div class="card p-3 col-12 col-md-5 col-lg-3">
             <div class="card-body">
               <h5 class="card-title fw-bold fs-4">Web and App Rangers</h5>
-              <p
-                class="fw-bold"
-              >
-                3 Subjects
-              </p>
-              <button
-                class="join-btn fw-bold w-100 p-1"
-              >
-                Join
-              </button>
+              <p class="fw-bold">3 Subjects</p>
+              <button class="join-btn fw-bold w-100 p-1">Join</button>
             </div>
           </div>
         </div>
@@ -555,44 +531,52 @@
     <!--Result Section >-->
     <section
       id="resultSection"
-      style="display: none; height: 75vh"
+      style="display: none;"
     >
-      <div class="showResult d-flex align-items-center justify-content-between flex-column">
+      <div
+        class="showResult d-flex align-items-center justify-content-between flex-column"
+      >
         <h1
           class="display-4 text-center mt-4 pt-3"
           style="text-decoration: underline"
         >
           RESULT
         </h1>
-        
-          
-            <div class="progress-circle over50 p77 ">
-              <span id="resultPercentage"></span>
-              <div class="left-half-clipper">
-                 <div class="first50-bar" id="first50-bar"></div>
-                 <div class="value-bar" id="valueBar"></div>
-              </div>
-           </div>
-           
-          <h2 class="totalQuestion mt-2">Total Question</h2>
-          <h3 id="numberOfQuestion"></h3>
 
-          <h2 class="correctQuestion">Correct Questions</h2>
-          <h3 id="correctQuest"></h3>
+        <div class="progress-circle over50 p77">
+          <span id="resultPercentage"></span>
+          <div class="left-half-clipper">
+            <div
+              class="first50-bar"
+              id="first50-bar"
+            ></div>
+            <div
+              class="value-bar"
+              id="valueBar"
+            ></div>
+          </div>
+        </div>
+
+        <h2 class="totalQuestion mt-2">Total Question</h2>
+        <h3 id="numberOfQuestion"></h3>
+
+        <h2 class="correctQuestion">Correct Questions</h2>
+        <h3 id="correctQuest"></h3>
 
         <!-- <h3
             class="text-center"
             id="message"
-          ></h3> -->        
+          ></h3> -->
       </div>
     </section>
 
-
-    <footer class="align-items-center justify-content-center p-3" style="display: flex;">
-      
+    <footer
+      class="align-items-center justify-content-center p-3"
+      style="display: flex"
+    >
       <p class="fs-5 fw-bold text-center">
-        Developed By<span class=""> SW Team</span> | All rights
-        reserved | <span id="footerYear"></span>
+        Developed By<span class=""> SW Team</span> | All rights reserved |
+        <span id="footerYear"></span>
       </p>
     </footer>
 
