@@ -180,9 +180,25 @@ const deSelect = () => {
   }
 };
 
+// Skip button event
+
+const skip = () => {
+  if (questionCount < htmlQuiz.length - 1) {
+    questionCount++;
+    deSelect();
+    renderQuestion();
+  } else {
+    resultSection.style.display = "flex";
+    resultSection.style.alignItems = "center";
+    resultSection.style.justifyContent = "center";
+    quizQuestion.style.display = "none";
+    showResult();
+  }
+};
+
 // Next button event
 
-function next() {
+const next = () => {
   let checkedAns = false;
   for (var i = 0; i < allOptions.length; i++) {
     if (allOptions[i].checked) {
@@ -214,13 +230,12 @@ function next() {
       showResult();
     }
   }
-}
+};
 
 const noOfQuestions = document.getElementById("numberOfQuestion");
 const correctQuestion = document.getElementById("correctQuest");
-const message = document.getElementById("message");
+const message = document.querySelector(".message");
 var first50Bar = document.getElementById("first50-bar");
-var resultPercentage = document.getElementById("resultPercentage");
 var valueBar = document.getElementById("valueBar");
 let progressBar = document.getElementById("progressBar");
 
@@ -231,14 +246,16 @@ function showResult() {
   let totalMCQs = 10;
   let result = (score / totalMCQs) * 100;
 
+  progressBar.style.width = result + "%";
+  progressBar.textContent = result.toFixed(0) + "%";
   if (result < 69) {
-    resultPercentage.innerText = `${result}%`;
-    first50Bar.style.backgroundColor = "red";
-    valueBar.style.border = "0.45em solid red";
+    message.style.color = "red";
+    message.innerText = "Sorry, You have failed!";
+    progressBar.style.backgroundColor = "red";
   } else {
-    resultPercentage.innerText = `${result}%`;
-    first50Bar.style.backgroundColor = "green";
-    valueBar.style.border = "0.45em solid green";
+    message.style.color = "green";
+    message.innerText = "Congratulations, You have passed!";
+    progressBar.style.backgroundColor = "#4CAF50";
   }
 }
 
@@ -309,7 +326,7 @@ const noNumbersInName = (str) => {
   return false;
 };
 
-// Function to prevent name input <=2
+// Function to prevent name input less than two alphabets
 
 const nameInputSize = (str) => {
   if (str.length <= 2) {
@@ -414,10 +431,17 @@ const goToLogin = () => {
   registerUI.style.display = "none";
 };
 
+// Function to capitalize the first letter of name on dashboard
+
+const capitalizeFirstLetter = (str) => {
+  return str[0].toUpperCase() + str.slice(1);
+};
+
 // Login
 
 const loginEmailInput = document.querySelector(".loginEmailInput"),
-  loginPasswordInput = document.querySelector(".loginPasswordInput");
+  loginPasswordInput = document.querySelector(".loginPasswordInput"),
+  loggedIn__user = document.querySelector(".loggedIn__user");
 
 const login = () => {
   storage = localStorage.getItem("Registered Users");
@@ -437,6 +461,9 @@ const login = () => {
       loginPage.style.display = "none";
       version.style.display = "none";
       courseSection.style.display = "block";
+      loggedIn__user.innerHTML = `${capitalizeFirstLetter(
+        arr[i].register_name
+      )}`;
     }
   }
   if (!flag2) {

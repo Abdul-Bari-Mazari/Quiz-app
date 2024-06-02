@@ -67,7 +67,6 @@
               <input
                 id="themeToggle"
                 type="checkbox"
-    
               />
               <span class="slider"></span>
             </label>
@@ -80,26 +79,26 @@
             ><span class="q">Q</span>uiz Application</a
           >
         </div>
-
       </div>
     </nav>
 
     <!-- ************* Main Page ***************** -->
 
-    <div class="section__themeSwitch d-none align-items-center justify-content-center p-2 gap-2">
-      <p style="margin-bottom: 0;">Switch Mode:</p>
-        <div class="checkbox-wrapper-54">
-          <label class="switch">
-            <input
-              id="themeToggle__responsive"
-              type="checkbox"
-   
-            />
-            <span class="slider"></span>
-          </label>
-        </div>
+    <div
+      class="section__themeSwitch d-none align-items-center justify-content-center p-2 gap-2"
+    >
+      <p style="margin-bottom: 0">Switch Mode:</p>
+      <div class="checkbox-wrapper-54">
+        <label class="switch">
+          <input
+            id="themeToggle__responsive"
+            type="checkbox"
+          />
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
-    
+
     <section
       id="main-page"
       class="p-1 py-5 p-md-5 text-center"
@@ -356,7 +355,9 @@
     >
       <div class="container">
         <div class="text-center text-sm-start">
-          <h2 class="text-primary display-6">Hi, Abdul Bari 👋</h2>
+          <h2 class="text-primary display-6">
+            Hi, <span class="loggedIn__user"></span> 👋
+          </h2>
           <p class="fw-bold fs-5">
             Welcome to the SMIT's quiz portal. Select your course below to take
             a quiz.
@@ -448,7 +449,7 @@
         <hr />
 
         <div id="quizWindow">
-          <ul class="fs-4">
+          <ul class="fs-4 list-of-mcqs">
             <li>
               <span
                 class="fw-bold"
@@ -515,8 +516,18 @@
           </ul>
         </div>
 
-        <div class="text-center text-sm-start mb-5">
+        <div
+          class="d-flex align-items-center gap-2 text-center text-sm-start mb-5"
+        >
           <!-- <button onclick="openDashboard()" class="btn btn-secondary mx-4 fw-bold px-3">Back</button> -->
+          <button
+            onclick="skip()"
+            class="btn btn-warning fw-bold px-3 text-start"
+            id="submit"
+          >
+            Skip
+          </button>
+
           <button
             onclick="next()"
             class="btn btn-primary fw-bold px-3 text-start"
@@ -531,10 +542,10 @@
     <!--Result Section >-->
     <section
       id="resultSection"
-      style="display: none;"
+      style="display: none"
     >
       <div
-        class="showResult d-flex align-items-center justify-content-between flex-column"
+        class="showResult d-flex align-items-center justify-content-between flex-column gap-3"
       >
         <h1
           class="display-4 text-center mt-4 pt-3"
@@ -543,25 +554,37 @@
           RESULT
         </h1>
 
-        <div class="progress-circle over50 p77">
-          <span id="resultPercentage"></span>
-          <div class="left-half-clipper">
-            <div
-              class="first50-bar"
-              id="first50-bar"
-            ></div>
-            <div
-              class="value-bar"
-              id="valueBar"
-            ></div>
+        <div
+          class="progressBar__wrapper d-flex align-items-center justify-content-center"
+        >
+          <div
+            id="progressContainer"
+            style="width: 60%; background-color: #ddd"
+          >
+            <div id="progressBar"></div>
           </div>
         </div>
 
-        <h2 class="totalQuestion mt-2">Total Question</h2>
-        <h3 id="numberOfQuestion"></h3>
+        <h2
+          class="message text-center mt-3"
+          style="font-size: 50px"
+        ></h2>
 
-        <h2 class="correctQuestion">Correct Questions</h2>
-        <h3 id="correctQuest"></h3>
+        <h2 class="totalQuestion mt-2">
+          Total Question:
+          <span
+            id="numberOfQuestion"
+            class="text-primary fw-bold"
+          ></span>
+        </h2>
+
+        <h2 class="correctQuestion">
+          Correct Questions:
+          <span
+            id="correctQuest"
+            class="text-primary fw-bold"
+          ></span>
+        </h2>
 
         <!-- <h3
             class="text-center"

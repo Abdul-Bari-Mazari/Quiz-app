@@ -163,6 +163,10 @@ footer {
   height: 100vh;
 }
 
+.list-of-mcqs {
+  padding-left: 0rem;
+}
+
 /* Buttons */
 
 .radio-btn {
