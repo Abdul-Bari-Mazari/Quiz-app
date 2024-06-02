@@ -55,6 +55,14 @@ input {
 input::placeholder {
   font-size: medium !important;
 }
+
+.passwordEye,
+.passwordEye__register {
+  width: 30px;
+  margin-left: -35px;
+  cursor: pointer;
+}
+
 section {
   background-color: var(--bg-color-light);
   color: var(--text-color-light);

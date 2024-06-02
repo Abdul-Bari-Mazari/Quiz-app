@@ -8,10 +8,8 @@
     />
 
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
+      href="./bootstrap-5.2.3-dist//css/bootstrap.min.css"
     />
 
     <link
@@ -61,7 +59,7 @@
           />
         </a>
 
-        <div class="d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center gap-3">
           <div class="checkbox-wrapper-54 navbar__themeSwitch">
             <label class="switch">
               <input
@@ -178,12 +176,20 @@
                 for="loginPass"
                 >Password</label
               >
-              <input
-                type="password"
-                id="loginPass"
-                class="loginPasswordInput form-control"
-                placeholder="Enter your password..."
-              />
+              <div class="login__password__input d-flex align-items-center">
+                <input
+                  type="password"
+                  id="loginPass"
+                  class="loginPasswordInput form-control"
+                  placeholder="Enter your password..."
+                />
+
+                <img
+                  class="passwordEye"
+                  src="https://static.vecteezy.com/system/resources/thumbnails/014/551/056/small_2x/eye-icon-simple-flat-eye-design-vision-care-concept-wear-glasses-for-a-clear-vision-png.png"
+                  alt=""
+                />
+              </div>
             </div>
 
             <!-- 2 column grid layout for inline styling -->
@@ -298,12 +304,20 @@
                 for="registerPass"
                 >Password</label
               >
-              <input
-                type="password"
-                id="registerPass"
-                class="registerPasswordInput form-control"
-                placeholder="Enter password..."
-              />
+
+              <div class="register__password__input d-flex align-items-center">
+                <input
+                  type="password"
+                  id="registerPass"
+                  class="registerPasswordInput form-control"
+                  placeholder="Enter password..."
+                />
+                <img
+                  class="passwordEye__register"
+                  src="https://static.vecteezy.com/system/resources/thumbnails/014/551/056/small_2x/eye-icon-simple-flat-eye-design-vision-care-concept-wear-glasses-for-a-clear-vision-png.png"
+                  alt=""
+                />
+              </div>
             </div>
 
             <!-- Register buttons -->
@@ -433,6 +447,7 @@
       <div
         class="container pb-5"
         id="quizQuestion"
+        style="display: none"
       >
         <div
           class="d-flex align-items-center justify-content-center flex-column"
@@ -522,7 +537,7 @@
           <!-- <button onclick="openDashboard()" class="btn btn-secondary mx-4 fw-bold px-3">Back</button> -->
           <button
             onclick="skip()"
-            class="btn btn-warning fw-bold px-3 text-start"
+            class="btn btn-secondary fw-bold px-3 text-start"
             id="submit"
           >
             Skip
@@ -557,10 +572,7 @@
         <div
           class="progressBar__wrapper d-flex align-items-center justify-content-center"
         >
-          <div
-            id="progressContainer"
-            style="width: 60%; background-color: #ddd"
-          >
+          <div id="progressContainer">
             <div id="progressBar"></div>
           </div>
         </div>
@@ -586,10 +598,22 @@
           ></span>
         </h2>
 
-        <!-- <h3
-            class="text-center"
-            id="message"
-          ></h3> -->
+        <div
+          class="result__section__buttons d-flex align-items-center justify-content-between gap-3"
+        >
+          <button
+            id="logoutBtn"
+            class="btn btn-danger fs-4"
+          >
+            Logout
+          </button>
+          <button
+            id="restartBtn"
+            class="btn btn-primary fs-4"
+          >
+            Restart
+          </button>
+        </div>
       </div>
     </section>
 
@@ -603,11 +627,8 @@
       </p>
     </footer>
 
+    <script src="quiz_questions.js"></script>
     <script src="app.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    <script src="./bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

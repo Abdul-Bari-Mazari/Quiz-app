@@ -1,96 +1,3 @@
-const htmlQuiz = [
-  {
-    question: "Who is making the Web standards?",
-    optionA: "GOOGLE",
-    optionB: "MICROSOFT",
-    optionC: "MOZILLA",
-    optionD: "WORLD WIDE WEB",
-    correctAnswer: "WORLD WIDE WEB",
-  },
-
-  {
-    question: "Who is the founder of JavaScript?",
-    optionA: "Abdul Bari",
-    optionB: "Abdul Haseeb",
-    optionC: "Dr Shafique",
-    optionD: "Brenden Eich",
-    correctAnswer: "Brenden Eich",
-  },
-
-  {
-    question: "JavaScript is a ___ language?",
-    optionA: "Object Oriented",
-    optionB: "Object Based",
-    optionC: "Procedural",
-    optionD: "None of the above",
-    correctAnswer: "Object Oriented",
-  },
-
-  {
-    question: "How to write a comment in JavaScript",
-    optionA: "/* */",
-    optionB: "//",
-    optionC: "#",
-    optionD: "$$",
-    correctAnswer: "//",
-  },
-
-  {
-    question: "Where is the correct place to insert a JavaScript?",
-    optionA: "The &lt;head&gt; section",
-    optionB: "The &lt;body&gt; section",
-    optionC: "Both head and body",
-    optionD: "None of the above",
-    correctAnswer: "Both head and body",
-  },
-
-  {
-    question:
-      'What is the correct syntax for referring to an external script called "app.js?"',
-    optionA: '&lt;script name="app.js&gt;',
-    optionB: '&lt;script src="app.js"&gt;',
-    optionC: '&lt;script href="app.js"&gt;',
-    optionD: '&lt;link href="xxx.js"&gt;',
-    correctAnswer: '&lt;script src="app.js"&gt;',
-  },
-
-  {
-    question: 'How do you write "Hello World" in an alert box?',
-    optionA: 'msg("Hello World")',
-    optionB: 'alertBox("Hello World")',
-    optionC: 'alert("Hello World")',
-    optionD: 'msgBox("Hello World")',
-    correctAnswer: 'alert("Hello World")',
-  },
-
-  {
-    question: "How do you create a function in JavaScript?",
-    optionA: "function:myFuction()",
-    optionB: "function myFunction()",
-    optionC: "function = myFunction()",
-    optionD: "myFunctiom function()",
-    correctAnswer: "function myFunction()",
-  },
-
-  {
-    question: 'How do you call a function named "myFunction"?',
-    optionA: "call function myFunction()",
-    optionB: "call myFunction()",
-    optionC: "myFunction()",
-    optionD: "function myFunction()",
-    correctAnswer: "myFunction()",
-  },
-
-  {
-    question: "How to write an IF statement in JavaScript?",
-    optionA: "if i == 5 then",
-    optionB: "if i = 5 then",
-    optionC: "if (i == 5)",
-    optionD: "if i = 5",
-    correctAnswer: "if (i == 5)",
-  },
-];
-
 // Switch theme
 
 const themeToggle = document.getElementById("themeToggle"),
@@ -123,6 +30,49 @@ themeToggle__responsive.addEventListener("click", (event) =>
   toggleTheme(event)
 );
 
+// Password eye function to peek
+
+let passwordEye = document.querySelector(".passwordEye");
+let passwordEye__register = document.querySelector(".passwordEye__register");
+
+const showLoginPassword = () => {
+  let loginPasswordInput = document.querySelector(".loginPasswordInput");
+
+  if (loginPasswordInput) {
+    if (loginPasswordInput.type === "password") {
+      loginPasswordInput.type = "text";
+    } else {
+      loginPasswordInput.type = "password";
+    }
+  }
+};
+
+const showRegisterPassword = () => {
+  let registerPasswordInput = document.querySelector(".registerPasswordInput");
+
+  if (registerPasswordInput) {
+    if (registerPasswordInput.type === "password") {
+      registerPasswordInput.type = "text";
+    } else {
+      registerPasswordInput.type = "password";
+    }
+  }
+};
+
+passwordEye.addEventListener("click", showLoginPassword);
+passwordEye__register.addEventListener("click", showRegisterPassword);
+
+// if (loginPasswordInput && loginPasswordInput.type === "password") {
+//   loginPasswordInput.type = "text";
+// } else {
+//   loginPasswordInput.type = "password";
+// }
+
+// if (registerPasswordInput && registerPasswordInput.type === "password") {
+//   registerPasswordInput.type = "text";
+// } else {
+//   registerPasswordInput.type = "password";
+// }
 // * Variables -------
 
 let questionCount = 0;
@@ -191,7 +141,7 @@ const skip = () => {
     resultSection.style.display = "flex";
     resultSection.style.alignItems = "center";
     resultSection.style.justifyContent = "center";
-    quizQuestion.style.display = "none";
+    quizMainWindow.style.display = "none";
     showResult();
   }
 };
@@ -223,10 +173,11 @@ const next = () => {
       deSelect();
       renderQuestion();
     } else {
+      questionCount = 0;
+      quizMainWindow.style.display = "none";
       resultSection.style.display = "flex";
       resultSection.style.alignItems = "center";
       resultSection.style.justifyContent = "center";
-      quizQuestion.style.display = "none";
       showResult();
     }
   }
@@ -240,7 +191,7 @@ var valueBar = document.getElementById("valueBar");
 let progressBar = document.getElementById("progressBar");
 
 // Display result function
-function showResult() {
+const showResult = () => {
   noOfQuestions.innerText = htmlQuiz.length;
   correctQuestion.innerHTML = score;
   let totalMCQs = 10;
@@ -257,7 +208,7 @@ function showResult() {
     message.innerText = "Congratulations, You have passed!";
     progressBar.style.backgroundColor = "#4CAF50";
   }
-}
+};
 
 const loginPage = document.getElementById("login-page");
 const mainPage = document.getElementById("main-page");
@@ -282,6 +233,10 @@ const registerImg = document.querySelector(".registerImg"),
   );
 
 const openRegistrationForm = () => {
+  // Empty login fields
+  loginEmailInput.value = "";
+  loginPasswordInput.value = "";
+
   // Empty the registration fields
   registerNameInputField.value = "";
   emailInputField.value = "";
@@ -302,10 +257,10 @@ const openLoginForm = () => {
   registerUI.style.display = "none";
 };
 
-function openDashboard() {
+const openDashboard = () => {
   mainPage.style.display = "none";
   loginPage.style.display = "flex";
-}
+};
 
 // **** Register in localStorage ****
 
@@ -335,13 +290,14 @@ const nameInputSize = (str) => {
   return false;
 };
 
-// Function to avoid the first character of an email to be number
+// Function to validate email
 
-const emailFirstCharacter = (str) => {
-  if (str[0] >= "0" && str[0] <= "9") {
-    return true;
-  }
-  return false;
+const validateEmail = (str) => {
+  return str
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
 };
 
 // Function to check password length
@@ -377,8 +333,8 @@ const alreadyRegistered = () => {
 const register = () => {
   if (noNumbersInName(registerNameInputField.value)) {
     alert("Name shouldn't contain numbers!");
-  } else if (emailFirstCharacter(emailInputField.value)) {
-    alert("Email can't start with a number!");
+  } else if (!validateEmail(emailInputField.value)) {
+    alert("Invalid or incorrect email!");
   } else if (
     isEmpty(registerNameInputField.value) &&
     isEmpty(emailInputField.value) &&
@@ -457,6 +413,8 @@ const login = () => {
       loginPasswordInput.value === arr[i].register_password
     ) {
       alert("Login successful!");
+      loginEmailInput.value = "";
+      loginPasswordInput.value = "";
       flag2 = true;
       loginPage.style.display = "none";
       version.style.display = "none";
@@ -474,21 +432,30 @@ const login = () => {
 let navbar = document.getElementById("mainNavbar");
 let footer = document.querySelector("footer");
 let timer = document.getElementById("quizTimer");
-let quizQuestion = document.getElementById("quizQuestion");
-quizQuestion.style.display = "none";
 
 // Show the Quiz section; start the timer
-function startQuiz() {
+
+let interval;
+
+const startQuiz = () => {
+  clearInterval(interval);
+
   const startingMinute = 3;
   let time = startingMinute * 60;
 
-  setInterval(function () {
+  const updateTimerDisplay = () => {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
-
     seconds = seconds < 10 ? "0" + seconds : seconds;
     timer.innerHTML = `${minutes} : ${seconds}`;
+  };
+
+  updateTimerDisplay();
+
+  interval = setInterval(() => {
     time--;
+
+    updateTimerDisplay();
 
     if (time < 10) {
       timer.style.color = "red";
@@ -496,7 +463,6 @@ function startQuiz() {
     if (time <= 0) {
       timer.innerHTML = "Time is up!";
       quizMainWindow.style.display = "none";
-      quizQuestion.style.display = "none";
       resultSection.style.display = "flex";
       resultSection.style.alignItems = "center";
       resultSection.style.justifyContent = "center";
@@ -507,8 +473,31 @@ function startQuiz() {
   courseSection.style.display = "none";
   navbar.style.display = "none";
   footer.style.display = "none";
-  quizQuestion.style.display = "block";
-}
+  quizMainWindow.style.display = "block";
+};
+
+let logoutBtn = document.getElementById("logoutBtn");
+
+const logout = () => {
+  window.location.reload();
+};
+
+logoutBtn.addEventListener("click", logout);
+
+let restartBtn = document.getElementById("restartBtn");
+
+const restartQuiz = () => {
+  score = 0;
+  questionCount = 0;
+  renderQuestion();
+  deSelect();
+  startQuiz();
+  // navbar.style.display = "flex";
+  // courseSection.style.display = "block";
+  // footer.style.display = "flex";
+};
+
+restartBtn.addEventListener("click", restartQuiz);
 
 // To show current year in footer
 
