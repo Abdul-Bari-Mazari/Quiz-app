@@ -197,6 +197,22 @@ const showResult = () => {
   let totalMCQs = 10;
   let result = (score / totalMCQs) * 100;
 
+  // ****************
+
+  console.log(currentEmail);
+
+  storage = localStorage.getItem("Registered Users");
+  arr = JSON.parse(storage);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].register_email === currentEmail) {
+      arr[i].user_score = score;
+    }
+  }
+  localStorage.setItem("Registered Users", JSON.stringify(arr));
+
+  // ****************
+
   progressBar.style.width = result + "%";
   progressBar.textContent = result.toFixed(0) + "%";
   if (result < 69) {
@@ -360,6 +376,7 @@ const register = () => {
       register_name: registerNameInputField.value.toLowerCase(),
       register_email: emailInputField.value.toLowerCase(),
       register_password: passwordInputField.value,
+      user_score: 0,
     };
 
     arr.push(registeredUsers);
@@ -399,6 +416,8 @@ const loginEmailInput = document.querySelector(".loginEmailInput"),
   loginPasswordInput = document.querySelector(".loginPasswordInput"),
   loggedIn__user = document.querySelector(".loggedIn__user");
 
+let currentEmail;
+
 const login = () => {
   storage = localStorage.getItem("Registered Users");
   arr = JSON.parse(storage);
@@ -412,6 +431,7 @@ const login = () => {
       loginEmailInput.value.toLowerCase() === arr[i].register_email &&
       loginPasswordInput.value === arr[i].register_password
     ) {
+      currentEmail = arr[i].register_email;
       alert("Login successful!");
       loginEmailInput.value = "";
       loginPasswordInput.value = "";
@@ -507,3 +527,11 @@ const date = new Date();
 let currentYear = date.getFullYear();
 
 footerYear.innerText = currentYear;
+
+// Admin Panel
+
+let adminBtn = document.getElementById("adminBtn");
+
+
+adminBtn.addEventListener(
+  "click", function() { window.location.href = "./adminPanel.html"});
