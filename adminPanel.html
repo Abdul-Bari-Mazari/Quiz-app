@@ -15,6 +15,7 @@
     <style>
       body {
         height: 100vh;
+        background-color: rgb(208, 208, 208);
       }
 
       p {
@@ -22,20 +23,82 @@
         font-weight: 500;
       }
 
+      .container {
+        background-color: white;
+      }
+
       #adminLogout {
         bottom: 20px;
+        right: 20px;
+      }
+
+      .adminLoginContainer {
+        background-color: white;
+        width: 320px;
+        /* align-items: end; */
+        align-items: center;
+      }
+
+      input {
+        outline: none;
+      }
+
+      #adminLoginBtn {
+        bottom: 10px;
         right: 20px;
       }
     </style>
   </head>
   <body class="d-flex align-items-center justify-content-center p-3">
     <div
-      class="container d-flex align-items-center justify-content-center border border-1 border-dark col-12 col-md-6 p-4 position-relative"
+      class="adminLoginContainer flex-column gap-3 border border-1 border-dark rounded p-5 position-relative"
+      style="display: flex"
+    >
+      <h2>Admin Login</h2>
+      <label
+        for=""
+        class="fw-bold"
+        >User:
+        <input
+          type="text"
+          name=""
+          id="adminPass"
+          value="admin"
+          class=""
+        />
+      </label>
+      <label
+        class="fw-bold"
+        for=""
+        >Pass:
+        <input
+          type="password"
+          name=""
+          id=""
+          placeholder="Password..."
+          class="mb-4"
+        />
+      </label>
+
+      <button
+        id="adminLoginBtn"
+        class="btn btn-secondary fw-bold px-3 position-absolute"
+      >
+        Login
+      </button>
+    </div>
+    <div
+      class="container align-items-center justify-content-center border border-1 border-dark col-12 col-md-6 p-4 position-relative rounded"
+      style="display: none"
+      id="adminDashboard"
     >
       <div class="adminPanel-container">
         <h1>Admin Panel</h1>
         <hr />
-        <div id="usersList" class="mb-5"></div>
+        <div
+          id="usersList"
+          class="mb-5"
+        ></div>
       </div>
       <button
         id="adminLogout"
@@ -46,6 +109,21 @@
     </div>
 
     <script>
+      let adminLoginContainer = document.querySelector(".adminLoginContainer");
+      let adminDashboard = document.getElementById("adminDashboard");
+      let adminPass = document.getElementById("adminPass");
+      let adminLoginBtn = document.getElementById("adminLoginBtn");
+
+      const adminLogin = () => {
+        if (adminPass.value === "admin") {
+          alert("Login Successful");
+          adminLoginContainer.style.display = "none";
+          adminDashboard.style.display = "flex";
+        }
+      };
+
+      adminLoginBtn.addEventListener("click", adminLogin);
+
       const usersList = document.getElementById("usersList");
 
       const storage = localStorage.getItem("Registered Users");
@@ -67,9 +145,11 @@
         usersList.appendChild(separator);
       });
 
-      let adminLogout = document.getElementById('adminLogout');
+      let adminLogout = document.getElementById("adminLogout");
 
-      adminLogout.addEventListener('click', function () { window.location.href = './index.html'})
+      adminLogout.addEventListener("click", function () {
+        window.location.href = "./index.html";
+      });
     </script>
   </body>
 </html>
